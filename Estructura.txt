@@ -1,0 +1,63 @@
+¿Cual debe ser la estructura del artículo?
+
+1) Introducción
+
+-¿Qué es optomecánica?
+-¿Que es enfriamiento optomecánico?
+-¿Por qué me importa?
+-¿Cómo lo modelo?
+
+2) Modelo teórico de un sistema optomecánico
+
+- Hamiltoniano 
+
+Debe incluir una bonita gráfica, probablemente de una cavidad de espejo móvil, el caso más sencillo posible.
+
+- Modelo de disipación
+
+El modelo básico, creo que es bueno tener disipación para la cavidad y para el resonador, y se emplea para ejemplificar aún más el concepto de escalas de tiempo.
+
+- Ecuación maestra
+
+Solo para poner todo junto y para introducir la base de decaimiento.
+
+3) Base de decaimiento
+
+- ¿Cuando se usa?
+
+Para introducir el tema.
+
+- ¿Cómo se deduce?
+
+Algo del artículo original
+
+
+- ¿Cómo se ve?
+
+Hay que mencionar también el caso de temperatura cero.
+
+- Ejemplo de traza
+
+
+4) Método de proyectores
+
+-Origen histórico
+
+- ¿Cómo se ven?
+Expresión explicita
+
+- Propiedades
+
+Salen del carmichael me parece
+
+- Escalas de tiempo
+
+Explicar que esta es la justificación fisica del procedimiento
+
+5) Aproximación adiabática
+
+- Cálculo detallado
+- Cálculo detallado de trazas y de elementos de operadores
+-Obtener A_ y A+
+
+

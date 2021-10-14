@@ -1,0 +1,40 @@
+%The projection operators are
+
+%\begin{align}\label{eq:ProjectionOperators3LA}
+%    P =& \ketbra{a}{a}+\ketbra{b}{b},\\
+%    Q =& \ketbra{e}{e}.
+%\end{align} These operators have the following properties
+
+\begin{align}
+    P^2=P, \quad Q^2 = Q,\\
+    PQ = QP = 0,\\
+    P+Q =\mathcal{I},
+\end{align} which are all easily verifiable from the definitions \eqref{eq:ProjectionOperators3LA}. The projectors span the entire state space and project to sub-spaces that do not overlap. If the state of the system at a time $t$ is given by $\rho(t)$, then the time evolution of $\rho(t)$ is given by the Liouville equation 
+
+\begin{equation}
+    \dot{\rho} = \mathcal{L}\rho(t) = \frac{i}{\hbar}[\rho(t),\widehat{H}].
+\end{equation} The Hamiltonian is written as the sum of two terms
+
+\begin{equation}
+    \widehat{H}_0=\hbar\left[\begin{array}{ccc}
+-\frac{\delta}{2} & 0 & \frac{\Omega_{a}^{*}}{2} \\
+0 & \frac{\delta}{2} & \frac{\Omega_{b}^{*}}{2} \\
+\frac{\Omega_{a}}{2} & \frac{\Omega_{b}}{2} & 0
+\end{array}\right],
+\end{equation} and
+
+\begin{equation}
+    \widehat{H}_\Delta=\hbar\left[\begin{array}{ccc}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & \Delta
+\end{array}\right],
+\end{equation} such that
+
+\begin{equation}
+    \widehat{H} = \widehat{H}_0 + \widehat{H}_\Delta.
+\end{equation} This definition leads to one additional property for the projection operators, namely
+
+\begin{equation}
+    P\mathcal{L}_\Delta P = 0
+\end{equation} $\mathcal{L}_\Delta$ does not couple states in $P$.

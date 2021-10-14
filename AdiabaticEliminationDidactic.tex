@@ -1,0 +1,241 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{braket}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\superket}[1]{|#1\rangle\rangle}
+\newcommand{\superbra}[1]{\langle\langle #1 |}
+\newcommand{\superbracket}[2]{\langle\langle #1 |#2\rangle\rangle}
+\newcommand{\supermatrix}[2]{|#1\rangle\rangle\langle\langle #2|}
+\newcommand{\supermel}[3]{\langle\langle #1 |#2|#3 \rangle\rangle}
+
+\begin{document}
+
+\title{Adiabatic approximation didactic paper}
+\author{Pablo Enrique Yanes Thomas}
+\date{\today}
+
+
+\maketitle
+
+\section{Introduction}
+ Parragraph on optomechanics
+ 
+ Parragraph on optomechanical cooling
+ 
+ Parragraph on  mathematical formalism used to describe it
+ 
+ Parragraph explaining structure
+
+
+\section{Quantum mechanics in Liouville space}
+
+To begin it is important to explain the mathematical spaces that will be involved in the following calculations. The wave function in quantum mechanics is a vector in Hilbert space. This Hilbert space is denoted as $\mathcal{H}_d$, where $d$ is the dimension of the Hilbert space. The system's Hamiltonian is an operator and belongs to a different space, also a Hilbert space, of dimension $d^2$, which is denoted by $\mathcal{O}_d$ as this is the space of Linear Operators, which act on the vectors that are elements of $\mathcal{H}_d$. Elements of these two Hilbert spaces are often represented as vectors and matrices respectively. For the projection technique that will be employed later on, it is useful to work with the Liouville equation, which models the time evolution of the density operator, which is an element of $\mathcal{O}_d$. It will be useful to define a new space of \textit{vectorized} elements of $\mathcal{O}_d$. This space has the same dimension as $\mathcal{O}_d$ and will be denoted by $\mathcal{L}_d$. It is also necessary to define the space of "super operators" which act on elements of $\mathcal{L}_d$ and which will be denoted as $\mathcal{S}_{d^2}$. These spaces, as well as the "super ket" formalism which will be employed are discussed in depth in \cite{GyamfiLiouvilleSpace2020}. The super ket formalism consists of defining the spaces $\mathcal{L}_d$ and $\mathcal{S}_{d^2}$ which allows for quantum mechanics to be done using density operators and the super operators that act on them as if they were vectors and matrices respectively. The elements of $\mathcal{L}_d$ are obtained via the bra flipper operator. Given an element $\mathcal{O}_d$, written as
+
+\begin{equation}
+    A = \ketbra{a}{b},
+\end{equation} applying the bra flipper operator $\Upsilon$ yields
+
+\begin{equation}
+    \Upsilon(A) = \ket{a} \otimes \ket{b}^* =\superket{a,b}.
+\end{equation} The symbol $\otimes$ denotes a Kroenecker product. The Kronecker product has the following properties \cite{FernandezKronecker2016}
+
+\begin{align*}
+    A \otimes (B+C) =& A \otimes B + A \otimes C\\
+    (A+B) \otimes C =& A \otimes C + B \otimes C\\
+    (kA)\otimes B =& A\otimes (kB) = k(A \otimes B), \quad k \in \mathbb{C}\\
+    (A \otimes B) \otimes C =& A \otimes (B \otimes C).
+\end{align*} In matrix representation, the product works as
+
+\begin{equation}
+\begin{pmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}
+\end{pmatrix}
+\otimes
+\begin{pmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}
+\end{pmatrix} =
+\begin{pmatrix}
+A_{11} B_{11} & A_{11} B{12} & A_{12} B_{11} & A_{12} B_{12} \\
+A_{11} B_{21} & A_{11} B{22} & A_{12} B_{21} & A_{12} B_{22} \\
+A_{21} B_{11} & A_{21} B{12} & A_{22} B_{11} & A_{22} B_{12} \\
+A_{21} B_{21} & A_{21} B{22} & A_{22} B_{21} & A_{22} B_{22}
+\end{pmatrix}.
+\end{equation}
+In this way, density operators can be treated as vectors. Note the rules of the Kroenecker product mean that dimension is retained. In the case of the density operator for a system such as the three level atom, for example, a $3x3$ matrix becomes a $9x1$ vector. All the aforementioned spaces have adjoint or dual spaces associated with them. In the case of $\mathcal{L}_d$, the associated dual space is labeled as $\mathcal{L}^*_d$. This dual space is completely analogous to the dual space defined for $\mathcal{H}_d$, denoted $\mathcal{H}^*_d$. Just as kets are elements of $\mathcal{H}_d$ and bras are elements of  $\mathcal{H}^*_d$, superkets are elements of $\mathcal{L}_d$ and superbras are elements of $\mathcal{L}^*_d$. With these two spaces, it's possible to define an inner product on $\mathcal{L}_d$
+
+\begin{align*}
+    \superbracket{a,b}{a',b'} =& (\bra{a}\otimes\bra{b})(\ket{a'}\otimes\ket{b'}),\\
+    =& \braket{a}{a'}\cdot\braket{b}{b'},\\
+    =& \delta_{a,a'} \delta_{b,b'}.
+\end{align*} Here the mixed product rule for the Kroenecker product has been used and it's assumed that the kets involved belong to an orthonormal basis of $\mathcal{H}_d$. If the inner product of $\mathrm{O}_d$ is the Hilbert-Schmidt inner product, then the transformation performed by $\Upsilon$ is an isomorphism between $\mathcal{O}_d$ and $\mathcal{L}_d$, so the results of products are conserved. As was mentioned before, the aim is to apply a proyection technique to adiabatically eliminate certain energy levels in the time evolution of quantum systems. The time evolution of these systems is modeled via the Liouville equation. In Liouville space, the Liouville equation for a density operator $\rho$ whose time evolution is dictated by a Hamiltonian $H$ is given by
+
+\begin{equation}
+     \dot{\rho} = -\frac{i}{\hbar}(H\otimes \mathcal{I}_d - \mathcal{I}_d \otimes H^T )\rho = \mathrm{L}\rho.
+\end{equation} It is important to note that the identity is the identity for the operator space. $\mathrm{L}$ is a superoperator that dictates the time evolution of the density operator in Liouville space. It is also useful to define the identity superoperator, which is an element of $\mathcal{S}_{d^2}$ and fulfills
+
+\begin{equation}
+    \mathcal{I}_{d^2}\superket{a,b} = \superket{a,b}.
+\end{equation}
+
+The identity is simply
+
+\begin{equation}
+    \mathcal{I}_{d^2}= \sum_{a=1}^d \sum_{a'=1}^d \supermatrix{a,a'}{a,a'}.
+\end{equation} 
+
+\section{Three level atom}\label{sect:ThreeLevelAtom}
+
+The first example consists of a three level atom in the $\Lambda$ configuration, such as the one in \cite{Ying3LevelAtom1996}. This system consists of an atom where only3 different energy levels are considered. Two of these levels, labeled $a$ and $b$, are close to each other and the third level, labeled $e$, is farther way from the other two. The atom interacts with two separate lasers, one with frequency $\omega_a$ which couples the $a$ and $e$ levels with detuning $\lambda_a$ and one with frequency $\omega_b$ which couples the $b$ and $e$ levels with detuning $\delta_b$. There is no direct coupling between the $a$ and $b$ levels. In the case where the $e$ level is highly detuned, the objective is to eliminate it adiabatically, following a procedure similar to the one found in \cite{BrionAdiabatic2006}, but without the use of Green's functions. Following that paper's notation,  the system's Hamiltonian in the rotating wave approximation is
+
+\begin{equation}\label{eq:Lambda_Hamiltonian}
+    \widehat{H}=\hbar\left[\begin{array}{ccc}
+-\frac{\delta}{2} & 0 & \frac{\Omega_{a}^{*}}{2} \\
+0 & \frac{\delta}{2} & \frac{\Omega_{b}^{*}}{2} \\
+\frac{\Omega_{a}}{2} & \frac{\Omega_{b}}{2} & \Delta
+\end{array}\right].
+\end{equation} Here $\Delta = \frac{\delta_a+\delta_b}{2}$ and $\delta = \delta_a-\delta_b$. $\Omega_a$ and $\Omega_b$ are the Rabbi frequencies of the two lasers. The zero for the energy spectrum is chosen to be the midpoint between the $a$ and $b$ levels. The lasers are assumed to be operating far from resonance such that $\abs{\Delta} \gg \abs{\delta},\abs{\Omega_a}, \abs{\Omega_b}$.The initial condition for the system is assumed to include only the two bottom levels. Since the third level is far detuned from the coupling lasers the objective is to adiabatically eliminate it and find an effective two level Hamiltonian for the system where the $e$ state serves only as a virtual state\cite{Gerry3LA1990}. The projection technique employed here is quite similar to those employed in \cite{NakajimaProyectors1958} and \cite{ZwanzigProyectors1960}. The core idea is to split the eigenvalue space into two parts. One part is the "relevant" part and the other the "irrelevant" part. By projecting the system's Liouville equation into both spaces and finding a closed equation for the relevant part of the system, an effective evolution equation for only the degrees of freedom that are of interest can be found. Physically, the procedure is justified by choosing relevant and irrelevant parts in a way such that they correspond to different time scales. In this particular example, the split is done according to the large parameter $\Delta$, as it indicates that that part of the system oscillates much more rapidly than the rest. 
+
+\subsection{Projection of the Lambda Atom}
+
+For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique tan will be employed to adiabatically eliminate the third energy level in the three level atom requires that the differential equation that describes the system's time evolution be projected into two different sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. the projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
+
+\begin{equation}
+    P+Q = \mathcal{I}_{d^2}.
+\end{equation}
+
+
+
+
+\section{Example optomechanical system}\label{sec:ExampleSystem}
+
+Possibly the most basic and perhaps most physically intuitive implementation of an optomechanical system is a Fabry-Perot cavity with a moving mirror. These types of systems, where an optical cavity composed of two parallel semi-transparent mirrors with one of the mirrors being suspended or otherwise able to move under the constraint of a harmonic potential, date back to experiments in gravitational interferometry \cite{AbramoviciLIGO1992}. For the purposes of this paper, we employ the standard optomechanical Hamiltonian developed in \cite{LawMovingMirror1995}
+
+\begin{equation}\label{eq:basic_hamiltonian}
+    H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x.
+\end{equation} Here, $a$ and $a^\dagger$ operators correspond to the cavity which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. The parameter $g_0$ is the vacuum optomechanical coupling strength and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling is weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
+
+\begin{equation}\label{eq:Optomechanic_hamiltonian}
+    H_{opt}=-\hbar \delta a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x + \Omega(a^\dagger+a),
+\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, which requires additional considerations.
+
+\subsection{Optomechanical master equation}
+
+We model the dissipation through the use of a master equation \cite{CarmichaelQuantumOptics1999}. A master equation models the interaction between a system of interest, often referred to as the central system, and a larger system often referred to as a reservoir, which represents the environment. In this manner, dissipation is modeled as an energy exchange between the system of interest and the reservoir. During the derivation, the reservoir degrees of freedom are traced out and the result is an equation that only models the evolution of the central system but which accounts for the energy it exchanges with its environment. In the case of the basic optomechanical system we are modeling, the master equation is
+
+\begin{equation} \label{eq:OptoMechanicalMasterEquation}
+\dot{\rho} = \frac{1}{i\hbar}[H,\rho] +L_a\rho + L_b \rho.
+\end{equation} The $L$ terms are of Lindblad form 
+
+\begin{align}
+L_a \rho =& - \frac{\kappa}{2}(n_p + 1)[a^\dagger a\rho + \rho a^\dagger a -2a\rho a^\dagger]  \\
+ &- \frac{\kappa}{2}(n_p)[ aa^\dagger\rho + \rho  aa^\dagger -2a^\dagger\rho a]\, ,\nonumber
+\end{align} and
+
+\begin{align}
+L_b \rho =& - \frac{\gamma}{2}(n_m + 1)[b^\dagger b\rho + \rho b^\dagger b -2b\rho b^\dagger]  \\
+ &- \frac{\gamma}{2}(n_m)[ bb^\dagger\rho + \rho  bb^\dagger -2b^\dagger\rho b]\, .\nonumber
+\end{align} In order to find a master equation that models optomechanical cooling it is necessary to find a convenient eigenbasis for these kinds of master equations. The basis we employ is called the damping basis and will be introduced in detail. 
+
+\section{The damping basis}
+
+When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is often desirable to be able to write the density operator in a convenient basis. When there is no dissipation, the choice of basis is often clear. In the presence of dissipation however, the problem is more complex. Here we illustrate the use of a basis particularly suited for these types of problems, the damping basis \cite{BriegelDampingBasis1993}. For the purpose of this exercise, we limit ourselves to the case of a cavity with dissipation, modeled by
+
+\begin{equation}\label{eq:DampingBasisMasterEquation}
+    \dot{\rho} = \frac{1}{i\hbar}[\hbar \omega a^\dagger a,\rho] +L_a\rho = \mathcal{L}\rho.
+\end{equation} $\mathcal{L}$ is the complete Liouville operator which includes both $H$ and $L$. $\mathcal{L}$ and $L$ act on the density operator $\rho$ which itself acts on vectors in the Hilbert space vectors, so sometimes $\mathcal{L}$ and $L$ are referred to as super operators. If we assume that \ref{eq:DampingBasisMasterEquation} has been solved and all of the eigenvalues are known, then it would be possible to write the density operator's initial state as an expansion
+
+\begin{equation}
+    \rho(0) = \sum_{\lambda} \check{c}_{\lambda} \hat{\rho}_{\lambda}, 
+\end{equation} so that the state of $\rho$ at any future time can be written as
+
+\begin{equation}
+    \rho(t) = \sum_{\lambda} \check{c}_{\lambda} e^{\lambda t}\hat{\rho}_{\lambda}. 
+\end{equation} In both cases $\lambda$ runs over all possible eigenvalues and accounts for different eigenstates should there be degeneracy. The problem then becomes finding an expression for the coefficients $\check{c}_{\lambda}$. This is done via a trace product
+
+\begin{equation}
+    \check{c}_\lambda = Tr[\rho(0)\check{\rho}_\lambda],
+\end{equation} where the states indicated with a check are known as "dual" states, which fulfill
+
+\begin{equation}
+    Tr[\hat{\rho}_{\lambda} \check{\rho}_{\lambda'}] = \delta_{\lambda,\lambda'}. 
+\end{equation} Dual and regular states are different, but produce the same eigenvalues
+
+\begin{align}
+    \mathcal{L}\hat{\rho}_\lambda =& \lambda \hat{\rho}_\lambda, \\
+    \check{\rho}_\lambda\mathcal{L} =& \lambda \check{\rho}_\lambda.
+\end{align} The states are given by
+
+\begin{align}
+  \hat{\rho}_n^k=& a^{\dagger k} \frac{(-1)^{n}}{(1+n_p)^{k+1}}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right):  \quad k \geq 0 \nonumber\\
+    \hat{\rho}_n^k=& \frac{(-1)^{n}}{(1+n_p)^{|k|+1}}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right): a^{|k|}  \quad k \leq 0 . \nonumber
+\end{align} Here the $L_n^k$ are the associated Laguerre polynomials. Here $n_p$ refers to the average thermal occupation of the thermal bath in contact with the cavity. $k$ and $n$ fulfill
+
+\begin{align}
+    n=&0,1,2,\dots \\
+    k=&0,\pm 1,\pm 2, \dots
+\end{align} and determine the eigenvalues for the dissipative part of $\mathcal{L}$
+
+\begin{equation}
+    \lambda_n^k=-\kappa (n+\frac{\abs{k}}{2}).
+\end{equation} It's worth noting that the eigenvalues are always non-positive, as these types of states decay in time. The dual states are similar and given by
+
+\begin{align}
+    \check{\rho}_n^k=&\left(\frac{-n_p}{1+n_p}\right)^{n} \frac{n !}{(n+k) !}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{n_p}\right]: a^{k} \quad  k \geq 0, \nonumber \\
+   \check{\rho}_n^k=&\left(\frac{-n_p}{1+n_p}\right)^{n} \frac{n !}{(n+|k|) !} a^{\dagger|k|}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{n_p}\right]: \quad k \leq 0, \nonumber
+\end{align} with the eigenvalues being the same as for the regular states. It's worth noting that the parameter $n_p$ appears in the eigenstates but not the eigenvalues. In the particular case where the cavity can be considered to be in contact with a bath at zero temperature, the states are given by far simpler expressions
+
+\begin{align}
+    \hat{\rho}_n^k=&\nonumber a^{\dagger k}(-1)^{a^{\dagger} a+n}\left(\begin{array}{c}
+n+k \\
+a^{\dagger} a+k
+\end{array}\right) \quad k \geq 0, \\
+\hat{\rho}_n^k=& \nonumber (-1)^{a^{\dagger} a+n}\left(\begin{array}{c}
+n+|k| \\
+a^{\dagger} a+|k|
+\end{array}\right) a^{|k|} \quad k \leq 0,
+\end{align} for the regular states and 
+
+\begin{align}
+    \check{\rho}_n^k =&\nonumber  \frac{n !}{(n+k) !}\left[\begin{array}{c}
+a^{\dagger} a \\
+n
+\end{array}\right] a^{k}=a^{\dagger n} a^{n+k} /(n+k) ! \quad k \geq 0,\\
+\check{\rho}_n^k =&\nonumber a^{\dagger|k|}\left(\begin{array}{c}
+a^{\dagger} a \\
+n
+\end{array}\right) \frac{n !}{(n+|k|) !}=a^{\dagger n+|k|} a^{n} /(n+|k|) ! \quad k \leq 0,
+\end{align} for the dual states. With the particular forms of these eigenstates, we now proceed to obtain a projected master equation for optomechanical cooling.
+
+
+\section{Projection of the master equation}
+
+The core idea of the method is to project the master equation into two different eigenvalue sub-spaces with no overlap between them. One subspace is relevant to the problem we wish to solve and the other one is not. In this particular case, since we wish to model a cooling process we wish to split the eigenvalue space into a sub-space corresponding only states that do not decay quickly in time and one space with states that do, such that at the end of the cooling process we would be left with only non-decaying states. Physically this is justifiable by considering different time scales. In the system considered in section \ref{sec:ExampleSystem}, three different time scales can be considered. This can be illustrated with some experimental parameters.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Source & $\frac{\nu_m}{2\pi}$ & $\frac{\kappa}{2\pi}$ & $\frac{g_0}{2\pi}$&  $\frac{\gamma}{2\pi}$  \\
+        \hline\hline
+        Vezio et al \cite{VezioOMExperiment2020} & 530 kHz & 1.9 MHz &  30 Hz & 0.08 Hz \\
+        \hline
+        Nielsen et al \cite{NielsenMultimodeOptomechanicalMembrane2017} & $\approx$ 1MHz & 14 MHz & 115 Hz & 170 mHz\\
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+
+\section{Adiabatic approximation}
+
+\bibliographystyle{unsrt}
+\bibliography{DidacticPaper}
+\end{document}
