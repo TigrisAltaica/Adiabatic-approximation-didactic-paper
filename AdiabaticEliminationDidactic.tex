@@ -7,6 +7,7 @@
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{blkarray}
 
 \newcommand{\superket}[1]{|#1\rangle\rangle}
 \newcommand{\superbra}[1]{\langle\langle #1 |}
@@ -35,7 +36,7 @@
 
 \section{Quantum mechanics in Liouville space}
 
-To begin it is important to explain the mathematical spaces that will be involved in the following calculations. The wave function in quantum mechanics is a vector in Hilbert space. This Hilbert space is denoted as $\mathcal{H}_d$, where $d$ is the dimension of the Hilbert space. The system's Hamiltonian is an operator and belongs to a different space, also a Hilbert space, of dimension $d^2$, which is denoted by $\mathcal{O}_d$ as this is the space of Linear Operators, which act on the vectors that are elements of $\mathcal{H}_d$. Elements of these two Hilbert spaces are often represented as vectors and matrices respectively. For the projection technique that will be employed later on, it is useful to work with the Liouville equation, which models the time evolution of the density operator, which is an element of $\mathcal{O}_d$. It will be useful to define a new space of \textit{vectorized} elements of $\mathcal{O}_d$. This space has the same dimension as $\mathcal{O}_d$ and will be denoted by $\mathcal{L}_d$. It is also necessary to define the space of "super operators" which act on elements of $\mathcal{L}_d$ and which will be denoted as $\mathcal{S}_{d^2}$. These spaces, as well as the "super ket" formalism which will be employed are discussed in depth in \cite{GyamfiLiouvilleSpace2020}. The super ket formalism consists of defining the spaces $\mathcal{L}_d$ and $\mathcal{S}_{d^2}$ which allows for quantum mechanics to be done using density operators and the super operators that act on them as if they were vectors and matrices respectively. The elements of $\mathcal{L}_d$ are obtained via the bra flipper operator. Given an element $\mathcal{O}_d$, written as
+It is important to explain the mathematical spaces that will be involved in the following calculations. The wave function in quantum mechanics is a vector in Hilbert space. This Hilbert space is denoted as $\mathcal{H}_d$, where $d$ is the dimension of the Hilbert space. The system's Hamiltonian is an operator and belongs to a different space, also a Hilbert space, of dimension $d^2$, which is denoted by $\mathcal{O}_d$ as this is the space of Linear Operators, which act on the vectors that are elements of $\mathcal{H}_d$. Elements of these two Hilbert spaces are often represented as vectors and matrices respectively. For the projection technique that will be employed later on, it is useful to work with the Liouville equation, which models the time evolution of the density operator, which is an element of $\mathcal{O}_d$. It will be useful to define a new space of \textit{vectorized} elements of $\mathcal{O}_d$. This space has the same dimension as $\mathcal{O}_d$ and will be denoted by $\mathcal{L}_d$. It is also necessary to define the space of "super operators" which act on elements of $\mathcal{L}_d$ and which will be denoted as $\mathcal{S}_{d^2}$. These spaces, as well as the "super ket" formalism which will be employed are discussed in depth in \cite{GyamfiLiouvilleSpace2020}. The super ket formalism consists of defining the spaces $\mathcal{L}_d$ and $\mathcal{S}_{d^2}$ which allows for quantum mechanics to be done using density operators and the super operators that act on them as if they were vectors and matrices respectively. The elements of $\mathcal{L}_d$ are obtained via the bra flipper operator. Given an element $\mathcal{O}_d$, written as
 
 \begin{equation}
     A = \ketbra{a}{b},
@@ -75,11 +76,11 @@ In this way, density operators can be treated as vectors. Note the rules of the 
     \superbracket{a,b}{a',b'} =& (\bra{a}\otimes\bra{b})(\ket{a'}\otimes\ket{b'}),\\
     =& \braket{a}{a'}\cdot\braket{b}{b'},\\
     =& \delta_{a,a'} \delta_{b,b'}.
-\end{align*} Here the mixed product rule for the Kroenecker product has been used and it's assumed that the kets involved belong to an orthonormal basis of $\mathcal{H}_d$. If the inner product of $\mathrm{O}_d$ is the Hilbert-Schmidt inner product, then the transformation performed by $\Upsilon$ is an isomorphism between $\mathcal{O}_d$ and $\mathcal{L}_d$, so the results of products are conserved. As was mentioned before, the aim is to apply a proyection technique to adiabatically eliminate certain energy levels in the time evolution of quantum systems. The time evolution of these systems is modeled via the Liouville equation. In Liouville space, the Liouville equation for a density operator $\rho$ whose time evolution is dictated by a Hamiltonian $H$ is given by
+\end{align*} Here the mixed product rule for the Kroenecker product has been used and it's assumed that the kets involved belong to an orthonormal basis of $\mathcal{H}_d$. If the inner product of $\mathrm{O}_d$ is the Hilbert-Schmidt inner product, then the transformation performed by $\Upsilon$ is an isomorphism between $\mathcal{O}_d$ and $\mathcal{L}_d$, so the results of products are conserved. The aim of this paper is to teach a projection technique used to adiabatically eliminate certain energy levels in the time evolution of quantum systems. The time evolution of these systems is modeled via the Liouville equation. In Liouville space, the Liouville equation for a density operator $\rho$ whose time evolution is dictated by a Hamiltonian $H$ is given by
 
-\begin{equation}
+\begin{equation}\label{eq:LiouvilleSpaceLiouvillian}
      \dot{\rho} = -\frac{i}{\hbar}(H\otimes \mathcal{I}_d - \mathcal{I}_d \otimes H^T )\rho = \mathrm{L}\rho.
-\end{equation} It is important to note that the identity is the identity for the operator space. $\mathrm{L}$ is a superoperator that dictates the time evolution of the density operator in Liouville space. It is also useful to define the identity superoperator, which is an element of $\mathcal{S}_{d^2}$ and fulfills
+\end{equation} It is important to note that the identity is the identity for the operator space. $\mathrm{L}$ is a super-operator that dictates the time evolution of the density operator in Liouville space. It is also useful to define the identity super-operator, which is an element of $\mathcal{S}_{d^2}$ and fulfills
 
 \begin{equation}
     \mathcal{I}_{d^2}\superket{a,b} = \superket{a,b}.
@@ -93,7 +94,7 @@ The identity is simply
 
 \section{Three level atom}\label{sect:ThreeLevelAtom}
 
-The first example consists of a three level atom in the $\Lambda$ configuration, such as the one in \cite{Ying3LevelAtom1996}. This system consists of an atom where only3 different energy levels are considered. Two of these levels, labeled $a$ and $b$, are close to each other and the third level, labeled $e$, is farther way from the other two. The atom interacts with two separate lasers, one with frequency $\omega_a$ which couples the $a$ and $e$ levels with detuning $\lambda_a$ and one with frequency $\omega_b$ which couples the $b$ and $e$ levels with detuning $\delta_b$. There is no direct coupling between the $a$ and $b$ levels. In the case where the $e$ level is highly detuned, the objective is to eliminate it adiabatically, following a procedure similar to the one found in \cite{BrionAdiabatic2006}, but without the use of Green's functions. Following that paper's notation,  the system's Hamiltonian in the rotating wave approximation is
+The first example consists of a three level atom in the $\Lambda$ configuration, such as the one in \cite{Ying3LevelAtom1996}. This system consists of an atom where only 3 different energy levels are considered. Two of these levels, labeled $a$ and $b$, are close to each other and the third level, labeled $e$, is farther way from the other two. The atom interacts with two separate lasers, one with frequency $\omega_a$ which couples the $a$ and $e$ levels with detuning $\lambda_a$ and one with frequency $\omega_b$ which couples the $b$ and $e$ levels with detuning $\delta_b$. There is no direct coupling between the $a$ and $b$ levels. In the case where the $e$ level is highly detuned, the objective is to eliminate it adiabatically, following a procedure similar to the one found in \cite{BrionAdiabatic2006}, but without the use of Green's functions. Following that paper's notation,  the system's Hamiltonian in the rotating wave approximation is
 
 \begin{equation}\label{eq:Lambda_Hamiltonian}
     \widehat{H}=\hbar\left[\begin{array}{ccc}
@@ -101,15 +102,106 @@ The first example consists of a three level atom in the $\Lambda$ configuration,
 0 & \frac{\delta}{2} & \frac{\Omega_{b}^{*}}{2} \\
 \frac{\Omega_{a}}{2} & \frac{\Omega_{b}}{2} & \Delta
 \end{array}\right].
-\end{equation} Here $\Delta = \frac{\delta_a+\delta_b}{2}$ and $\delta = \delta_a-\delta_b$. $\Omega_a$ and $\Omega_b$ are the Rabbi frequencies of the two lasers. The zero for the energy spectrum is chosen to be the midpoint between the $a$ and $b$ levels. The lasers are assumed to be operating far from resonance such that $\abs{\Delta} \gg \abs{\delta},\abs{\Omega_a}, \abs{\Omega_b}$.The initial condition for the system is assumed to include only the two bottom levels. Since the third level is far detuned from the coupling lasers the objective is to adiabatically eliminate it and find an effective two level Hamiltonian for the system where the $e$ state serves only as a virtual state\cite{Gerry3LA1990}. The projection technique employed here is quite similar to those employed in \cite{NakajimaProyectors1958} and \cite{ZwanzigProyectors1960}. The core idea is to split the eigenvalue space into two parts. One part is the "relevant" part and the other the "irrelevant" part. By projecting the system's Liouville equation into both spaces and finding a closed equation for the relevant part of the system, an effective evolution equation for only the degrees of freedom that are of interest can be found. Physically, the procedure is justified by choosing relevant and irrelevant parts in a way such that they correspond to different time scales. In this particular example, the split is done according to the large parameter $\Delta$, as it indicates that that part of the system oscillates much more rapidly than the rest. 
+\end{equation} Here $\Delta = \frac{\delta_a+\delta_b}{2}$ and $\delta = \delta_a-\delta_b$. $\Omega_a$ and $\Omega_b$ are the Rabbi frequencies of the two lasers. The zero for the energy spectrum is chosen to be the midpoint between the $a$ and $b$ levels. The lasers are assumed to be operating far from resonance such that $\abs{\Delta} \gg \abs{\delta},\abs{\Omega_a}, \abs{\Omega_b}$.The initial condition for the system is assumed to include only the two bottom levels. Since the third level is far detuned from the coupling lasers the objective is to adiabatically eliminate it and find an effective two level Hamiltonian for the system where the $e$ state serves only as a virtual state\cite{Gerry3LA1990}. The projection technique employed here is quite similar to those employed in \cite{NakajimaProyectors1958} and \cite{ZwanzigProyectors1960}. The core idea is to split the eigenvalue space into two parts. One part is the "relevant" part and the other the "irrelevant" part. By projecting the system's Liouville equation into both spaces and finding a closed equation for the relevant part of the system, an effective evolution equation for only the degrees of freedom that are of interest can be found. Physically, the procedure is justified by choosing relevant and irrelevant parts in a way such that they correspond to different time scales.
 
 \subsection{Projection of the Lambda Atom}
 
-For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique tan will be employed to adiabatically eliminate the third energy level in the three level atom requires that the differential equation that describes the system's time evolution be projected into two different sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. the projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
+For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
+
+\begin{equation}\label{eq:ProyectorProperty1}
+    P+Q = \mathcal{I}_{d^2}.
+\end{equation} Another property, which is inherent to projection super-operators is
 
 \begin{equation}
-    P+Q = \mathcal{I}_{d^2}.
+    P^2 = P \quad \& \quad Q^2 = Q.
+\end{equation} In the superket formalism, these super-operators can be expressed as matrices. The three level atom Hamiltonian acts on vectors which belong to a Hilbert space of dimension $d = 3$. The Hamiltonian is then an operator which belongs to a Hilbert space of dimension $d^2 = 9$. In the superket formalism, density operators, which belong to the same Hilbert space as the Hamiltonian, are expressed as $d \times 1$ vectors (with $d=9$ for the case of the three level atom) and super-operators are expressed as $d \times d$ matrices, so they belong to a space of dimension $d^2 \times d^2 = 81$. The superket basis that will be employed has two indices, this can be re-labeled to only have one index, but the current system will be maintained as it makes the connection to the physics more intuitive. The indices run as follows, for example in the case of the identity
+
+\begin{center}
+\begin{blockarray}{cccccccccc}
+$\superket{a,a}$ & $\superket{a,b}$ & $\superket{a,e}$ & $\superket{b,a}$ & $\superket{b,b}$ & $\superket{b,e}$ & $\superket{e,a}$ & $\superket{e,b}$ & $\superket{e,e}$ \\
+\begin{block}{(ccccccccc)c}
+  1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\superbra{a,a}$\\
+  0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\superbra{a,b}$\\
+  0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & $\superbra{a,e}$\\
+  0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & $\superbra{b,a}$\\
+  0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & $\superbra{b,b}$\\
+  0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & $\superbra{b,e}$\\
+  0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & $\superbra{e,a}$\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & $\superbra{e,b}$\\
+  0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & $\superbra{e,e}$\\
+\end{block}
+\end{blockarray}
+\end{center}
+The proposed projection super-operators are
+\begin{equation}
+    P = \begin{pmatrix}
+    1&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&1&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&1 
+    \end{pmatrix},
 \end{equation}
+
+and
+
+\begin{equation}
+    Q = \begin{pmatrix}
+    0&0&0&0&0&0&0&0&0 \\
+    0&1&0&0&0&0&0&0&0 \\
+    0&0&1&0&0&0&0&0&0 \\
+    0&0&0&1&0&0&0&0&0 \\
+    0&0&0&0&0&0&0&0&0 \\
+    0&0&0&0&0&1&0&0&0 \\
+    0&0&0&0&0&0&1&0&0 \\
+    0&0&0&0&0&0&0&1&0 \\
+    0&0&0&0&0&0&0&0&0 
+    \end{pmatrix}.
+\end{equation} which can be easily seen to fulfill equation \eqref{eq:ProyectorProperty1}. In Liouville space, the Liouville equation is \eqref{eq:LiouvilleSpaceLiouvillian}, so the Liouville super-operator can be easily calculated from the Hamiltonian \eqref{eq:Lambda_Hamiltonian}. It is convenient to split the Liouville super-operator as
+
+\begin{equation}
+    \mathrm{L} = \mathrm{L}_0 + \mathrm{L}_1,
+\end{equation}
+
+with
+
+\begin{equation} \label{}
+   \mathrm{L}_0 = \hbar\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & - \delta  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & -\frac{ \delta }{2}- \Delta  & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & h \delta  & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & \frac{ \delta }{2}- \Delta  & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & \frac{ \delta }{2}+ \Delta  & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & h \Delta -\frac{ \delta }{2} & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix},
+\end{equation} and
+
+\begin{equation}
+    \mathrm{L}_1 = \hbar\begin{pmatrix}0 & 0 & -\frac{ \Omega_a}{2} & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0 & 0\\
+0 & 0 & -\frac{ \Omega_b}{2} & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0\\
+-\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0 & 0 & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2}\\
+0 & 0 & 0 & 0 & 0 & -\frac{ \Omega_a}{2} & \frac{ \Omega_b^*}{2} & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & -\frac{ \Omega_b}{2} & 0 & \frac{ \Omega_b^*}{2} & 0\\
+0 & 0 & 0 & -\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0 & 0 & 0 & \frac{ \Omega_b^*}{2}\\
+\frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & 0 & 0 & 0 & 0 & -\frac{ \Omega_a}{2}\\
+0 & \frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & 0 & 0 & 0 & -\frac{ \Omega_b}{2}\\
+0 & 0 & \frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & -\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0\end{pmatrix}.
+\end{equation} With these expressions for the Liouville super-operator in had, two further properties can be established for the projectors which can be verified through matrix multiplication. These are
+
+\begin{equation}
+    P\mathrm{L}_0 = \mathrm{L}_0P = 0,
+\end{equation} and
+
+\begin{equation}
+    P\mathrm{L}_1P = 0.
+\end{equation} The first property means that the states in the $P$  space all correspond to the eigenvalue 0. The second property means that $\mathrm{L}_1$ does not couple states in the $P$ space.
+
+
 
 
 
