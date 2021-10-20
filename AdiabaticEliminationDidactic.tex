@@ -108,7 +108,7 @@ The first example consists of a three level atom in the $\Lambda$ configuration,
 
 For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
 
-\begin{equation}\label{eq:ProyectorProperty1}
+\begin{equation}\label{eq:ProyectorPropertyIdentity}
     P+Q = \mathcal{I}_{d^2}.
 \end{equation} Another property, which is inherent to projection super-operators is
 
@@ -163,7 +163,7 @@ and
     \end{pmatrix}.
 \end{equation} which can be easily seen to fulfill equation \eqref{eq:ProyectorProperty1}. In Liouville space, the Liouville equation is \eqref{eq:LiouvilleSpaceLiouvillian}, so the Liouville super-operator can be easily calculated from the Hamiltonian \eqref{eq:Lambda_Hamiltonian}. It is convenient to split the Liouville super-operator as
 
-\begin{equation}
+\begin{equation}\label{eq:ThreeLevelAtomLiouvillian}
     \mathrm{L} = \mathrm{L}_0 + \mathrm{L}_1,
 \end{equation}
 
@@ -199,7 +199,49 @@ with
 
 \begin{equation}
     P\mathrm{L}_1P = 0.
-\end{equation} The first property means that the states in the $P$  space all correspond to the eigenvalue 0. The second property means that $\mathrm{L}_1$ does not couple states in the $P$ space.
+\end{equation} The first property means that the states in the $P$  space all correspond to the eigenvalue 0. The second property means that $\mathrm{L}_1$ does not couple states in the $P$ space. The projection technique begins with the Liouville equation
+
+\begin{equation}
+    \dot{\rho} = \mathrm{L}\rho,
+\end{equation} with $\mathrm{L}$ the one in equation \eqref{eq:ThreeLevelAtomLiouvillian}. However, it is convenient to perform all calculations in the so-called dissipation picture. In this picture
+
+\begin{align}
+    \overline{\mathrm{L}}_1 =& e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t},\\
+    \overline{\rho}=&e^{-\mathrm{L}_0 t}\rho.
+\end{align} In this picture, the Liouville equation is
+
+\begin{equation}
+    \overline{\dot{\rho}} = \overline{\mathrm{L}}_1 \overline{\rho}. 
+\end{equation}
+
+The Liouville equation is projected into both the $P$ and $Q$ spaces
+
+\begin{align}
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1\rho.
+\end{align} Equation \eqref{eq:ProyectorPropertyIdentity} is then employed in each of the two equations
+
+\begin{align}
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1(P+Q)\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1(P+Q)\rho,  
+\end{align} leading to
+
+\begin{align}
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1Q\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1P\rho+Q\overline{\mathrm{L}}_1Q\rho.
+\end{align} The equation for the $Q$ space is then solved via formal integration resulting in
+
+\begin{equation}
+    Q\overline{\rho} = Q\overline{\rho_0} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'.
+\end{equation}  $\overline{\rho}$ is approximated as the initial condition $\overline{\rho}_0$ within the integrals. This leads to the elimination of the first and second terms as $\overline{\rho}_0$ can be chosen to have no part in the $Q$ space. This results in
+
+\begin{equation}
+    Q\overline{\rho} = \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
+\end{equation} This equation is substituted in the equation for the $P$ space
+
+\begin{equation}
+   P\dot{\rho} = P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt'.  
+\end{equation} This is a closed equation for the evolution of the $P$ space part of the density operator.
 
 
 
