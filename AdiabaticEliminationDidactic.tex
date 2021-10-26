@@ -8,6 +8,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{blkarray}
+\usepackage{cancel}
 
 \newcommand{\superket}[1]{|#1\rangle\rangle}
 \newcommand{\superbra}[1]{\langle\langle #1 |}
@@ -106,7 +107,7 @@ The first example consists of a three level atom in the $\Lambda$ configuration,
 
 \subsection{Projection of the Lambda Atom}
 
-For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
+For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different eigenvalue sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
 
 \begin{equation}\label{eq:ProyectorPropertyIdentity}
     P+Q = \mathcal{I}_{d^2}.
@@ -199,10 +200,12 @@ with
 
 \begin{equation}
     P\mathrm{L}_1P = 0.
-\end{equation} The first property means that the states in the $P$  space all correspond to the eigenvalue 0. The second property means that $\mathrm{L}_1$ does not couple states in the $P$ space. The projection technique begins with the Liouville equation
+\end{equation} The first property means that the states in the $P$  space all correspond to the eigenvalue 0. The second property means that $\mathrm{L}_1$ does not couple states in the $P$ space. 
+
+The projection technique begins with the Liouville equation
 
 \begin{equation}
-    \dot{\rho} = \mathrm{L}\rho,
+    \dot{\rho} =\frac{1}{i\hbar} \mathrm{L}\rho,
 \end{equation} with $\mathrm{L}$ the one in equation \eqref{eq:ThreeLevelAtomLiouvillian}. However, it is convenient to perform all calculations in the so-called dissipation picture. In this picture
 
 \begin{align}
@@ -211,40 +214,70 @@ with
 \end{align} In this picture, the Liouville equation is
 
 \begin{equation}
-    \overline{\dot{\rho}} = \overline{\mathrm{L}}_1 \overline{\rho}. 
+    \overline{\dot{\rho}} = \frac{1}{i\hbar}\overline{\mathrm{L}}_1 \overline{\rho}. 
 \end{equation}
 
 The Liouville equation is projected into both the $P$ and $Q$ spaces
 
 \begin{align}
-    P\dot{\rho} =& P\overline{\mathrm{L}}_1\rho,\\
-    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1\rho.
+    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1\rho,\\
+    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1\rho.
 \end{align} Equation \eqref{eq:ProyectorPropertyIdentity} is then employed in each of the two equations
 
 \begin{align}
-    P\dot{\rho} =& P\overline{\mathrm{L}}_1(P+Q)\rho,\\
-    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1(P+Q)\rho,  
+    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1(P+Q)\rho,\\
+    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1(P+Q)\rho,  
 \end{align} leading to
 
 \begin{align}
-    P\dot{\rho} =& P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1Q\rho,\\
-    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1P\rho+Q\overline{\mathrm{L}}_1Q\rho.
+    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1Q\rho,\\
+    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1P\rho+Q\overline{\mathrm{L}}_1Q\rho.
 \end{align} The equation for the $Q$ space is then solved via formal integration resulting in
 
 \begin{equation}
-    Q\overline{\rho} = Q\overline{\rho_0} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'.
+    Q\overline{\rho} = \frac{1}{i\hbar}(\cancel{Q\overline{\rho_0}} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\cancel{\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'}).
 \end{equation}  $\overline{\rho}$ is approximated as the initial condition $\overline{\rho}_0$ within the integrals. This leads to the elimination of the first and second terms as $\overline{\rho}_0$ can be chosen to have no part in the $Q$ space. This results in
 
 \begin{equation}
-    Q\overline{\rho} = \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
+    Q\overline{\rho} = \frac{1}{i\hbar}\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
 \end{equation} This equation is substituted in the equation for the $P$ space
 
 \begin{equation}
-   P\dot{\rho} = P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt'.  
-\end{equation} This is a closed equation for the evolution of the $P$ space part of the density operator.
+   P\dot{\rho} = \frac{1}{i\hbar}(\cancel{P\overline{\mathrm{L}}_1P\rho}+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt').  
+\end{equation} This is a closed equation for the evolution of the $P$ sub-space part of the density operator. Employing the definition for the decay picture
 
+\begin{equation}
+   P\dot{\rho} = \frac{1}{i\hbar}Pe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t Qe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t} Pe^{-\mathrm{L}_0 t}\rho_0 dt'.  
+\end{equation} It is often useful to express the projection super-operators as a sum of super-operators that each project into a specific eigenvalue sub-space. That is to say
 
+\begin{align}
+    P =& \sum_{\lambda_p} p_{\lambda_p},\\
+    Q =& \sum_{\lambda_q} q_{\lambda_q},
+\end{align} where each sum is over all possible eigenvalues in the corresponding sub-space. This leads to 
 
+\begin{equation}
+   P\dot{\rho} = \frac{1}{i\hbar}\sum_{\lambda_q} P e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t  q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}P e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+\end{equation} Only the $Q$ projector has been expanded as all $P$ space eigenvalues are 0. The $e^{\mathrm{L}_0 t}$ super-operator is included into the integral 
+
+\begin{equation}
+   P\dot{\rho} = \frac{1}{i\hbar}\sum_{\lambda_q} P e^{-\mathrm{L}_0 t}\mathrm{L}_1\int_0^t  e^{\mathrm{L}_0 t}q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}P e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+\end{equation} 
+
+The $\mathrm{L}$ super-operators can be applied to the projectors 
+
+\begin{align}
+   P\dot{\rho} =& \frac{1}{i\hbar}\sum_{\lambda_q} P e^{0}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1e^{0}P e^{0}\rho_0 dt', \nonumber \\ 
+    P\dot{\rho} =& \frac{1}{i\hbar}\sum_{\lambda_q} P \mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1P\rho_0 dt' \nonumber \\
+    P\dot{\rho} =& \frac{1}{i\hbar}\sum_{\lambda_q} P \mathrm{L}_1\int_0^t  e^{\lambda_q (t- t')}q_{\lambda_q}\mathrm{L}_1P\rho_0 dt'.
+\end{align} Performing the integration leads to
+
+\begin{equation}
+    P\dot{\rho} = \frac{1}{i\hbar}\sum_{\lambda_q} \frac{P \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1P\rho_0}{\lambda_q} (e^{\lambda_q} -1).
+\end{equation} The sum is over all 6 eigenvalues in the $Q$ sub-space so
+
+\begin{equation}
+    \lambda_q \in [\pm i\delta, i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )].
+\end{equation}
 
 
 
