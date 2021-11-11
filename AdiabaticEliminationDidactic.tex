@@ -26,14 +26,16 @@
 \maketitle
 
 \section{Introduction}
- Parragraph on optomechanics
  
- Parragraph on optomechanical cooling
+ It is not rare to encounter systems with a wide variety of evolution time-scales or large gaps between energy levels. When modeling these types of systems it is often advantageous or even necessary to approximate the system via an effective model where the slow or low energy parts of the system dominate the dynamics. This type of procedure is called adiabatic elimination \cite{GardinerStochasticMethods1983}. The concept of adiabatic elimination techniques is related to the concept of the adiabatic approximation \cite{HakenSynergetics2013}, where it is assumed that the dynamics of a system with slow and fast time scales are determined by the evolution in the slow time scale.
  
- Parragraph on  mathematical formalism used to describe it
- 
- Parragraph explaining structure
 
+ Adiabatic elimination techniques are widely employed in current research. In one particular example, an ancillary system with continuous output can be employed to measure a quantum system that interacts with the ancillary system. If this interaction is slower than the evolution of the ancillary system, the ancillary degrees of freedom can be adiabatically eliminated yielding a simpler system \cite{CernotikAdiabatic2015}. A different study analyzed an approach to produce an antibunched phonon field in a membrane-in-the-middle optomechanical setup where the cavity field is later adiabatically eliminated \cite{SeokAntibunching2017}. Adiabatic elimination techniques were also employed to eliminate the highly dissipative modes and simplify the dynamics of a hybrid optomechanical system consisting of an atomic ensemble trapped in an optomechanical cavity, with the aim of generating squeezing of the mechanical modes \cite{BaiMirrorSqueezing2019}. In a study analyzing the phase transitions in a hybrid system composed of an ultra cold atomic gas coupled to a mechanical membrane via a light field, adiabatic elimination is used to eliminate the light field and derive an effective Hamiltonian \cite{MannPhaseTransitions2017}. An effective beam splitter Hamiltonian can be used to describe a hybrid system composed of a trapped Bose-Einstein Condensate and an optomechanical cavity if the light field is adiabatically eliminated \cite{SinghStateTransfer2012}. Work has also been done aimed at studying first order corrections to and effective model obtained via adiabatic elimination \cite{JiangAdiabaticCorrection2016}. An effective Hamiltonian for a two qubit gate formed by two atoms in a lambda configuration in an optomechanical cavity can be obtained by adiabatically eliminating lossy channels \cite{ChauhanSwapGate2019}.
+ 
+ Two examples which will be relevant to this paper are the three level atom in a lambda configuration and cavity optomechanical cooling.  In the case of a three level atom in a lambda configuration, the system is usually assumed to have two "low" energy levels that are close together and a "high" energy level that is far away from the other two levels \cite{BrionAdiabatic2006}. In the case of an optomechanical cavity with both mechanical and electromagnetic dissipation for example, the relevant frequencies involved can differ by several orders of magnitude \cite{VezioOMExperiment2020}.
+
+The adiabatic elimination technique that will be presented in this paper relies on projection super-operators. The technique involves splitting the eigenvalue space of the original problem into two spaces, usually a "fast" evolving space and a "slow" evolving space. Once this split has been performed, an equation, or set of equations, that model the evolution of the "slow" space is obtained. The technique will be explained in detail using two different physical examples, a three level atom in a lambda configuration and an optomechanical cavity with dissipation. The concept of super-kets is also introduced in order to simplify the algebra in the case of the tree level atom.
+ 
 
 \section{Quantum mechanics in Liouville space}
 
