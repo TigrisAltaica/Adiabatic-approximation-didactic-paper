@@ -173,7 +173,7 @@ and
 with
 
 \begin{equation} \label{}
-   \mathrm{L}_0 = \hbar\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+   \mathrm{L}_0 = -i\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
 0 & - \delta  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
 0 & 0 & -\frac{ \delta }{2}- \Delta  & 0 & 0 & 0 & 0 & 0 & 0\\
 0 & 0 & 0 &  \delta  & 0 & 0 & 0 & 0 & 0\\
@@ -185,7 +185,7 @@ with
 \end{equation} and
 
 \begin{equation}
-    \mathrm{L}_1 = \hbar\begin{pmatrix}0 & 0 & -\frac{ \Omega_a}{2} & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0 & 0\\
+    \mathrm{L}_1 = -i\begin{pmatrix}0 & 0 & -\frac{ \Omega_a}{2} & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0 & 0\\
 0 & 0 & -\frac{ \Omega_b}{2} & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0\\
 -\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0 & 0 & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2}\\
 0 & 0 & 0 & 0 & 0 & -\frac{ \Omega_a}{2} & \frac{ \Omega_b^*}{2} & 0 & 0\\
@@ -200,7 +200,7 @@ with
 \end{equation} is also fulfilled.  The  property means that $\mathrm{L}_1$ does not map states in the $P$ space into states in the $P$ space. The particular choices for $P$ and $\mathrm{L}_0$ mean that the $P$ space contains all of the $\mathrm{L}_0$ eigenvalues that do not contain the parameter $\Delta$. As this parameter is the largest parameter, the eigenvalues that depend on it will oscillate more rapidly than the rest. The projection technique begins with the Liouville equation
 
 \begin{equation}
-    \dot{\rho} =\frac{1}{i\hbar} \mathrm{L}\rho,
+    \dot{\rho} = \mathrm{L}\rho,
 \end{equation} with $\mathrm{L}$ the one in equation \eqref{eq:ThreeLevelAtomLiouvillian}. However, it is convenient to perform all calculations in the so-called dissipation picture. In this picture
 
 \begin{align}
@@ -209,42 +209,42 @@ with
 \end{align} In this picture, the Liouville equation is
 
 \begin{equation}
-    \overline{\dot{\rho}} = \frac{1}{i\hbar}\overline{\mathrm{L}}_1 \overline{\rho}. 
+    \overline{\dot{\rho}} = \overline{\mathrm{L}}_1 \overline{\rho}. 
 \end{equation} The Liouville equation is projected into both the $P$ and $Q$ spaces
 
 \begin{align}
-    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1\rho,\\
-    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1\rho.
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1\rho.
 \end{align} Equation \eqref{eq:ProyectorPropertyIdentity} is then employed in each of the two equations
 
 \begin{align}
-    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1(P+Q)\rho,\\
-    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1(P+Q)\rho,  
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1(P+Q)\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1(P+Q)\rho,  
 \end{align} leading to
 
 \begin{align}
-    P\dot{\rho} =& \frac{1}{i\hbar}P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1Q\rho,\\
-    Q\dot{\rho} =& \frac{1}{i\hbar}Q\overline{\mathrm{L}}_1P\rho+Q\overline{\mathrm{L}}_1Q\rho.
+    P\dot{\rho} =& P\overline{\mathrm{L}}_1P\rho+P\overline{\mathrm{L}}_1Q\rho,\\
+    Q\dot{\rho} =& Q\overline{\mathrm{L}}_1P\rho+Q\overline{\mathrm{L}}_1Q\rho.
 \end{align} The equation for the $Q$ space is then solved via formal integration resulting in
 
 \begin{equation}
-    Q\overline{\rho} = \frac{1}{i\hbar}(\cancel{Q\overline{\rho_0}} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\cancel{\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'}).
-\end{equation} the initial condition $\overline{\rho}_0$ can be chosen so as to have no part in $Q$ which means the first term on the right hand side can be eliminated. As can be verified by straightforward matrix multiplication using the definitions of the projector and of $\mathrm{L}_1$, not only is $P\mathrm{L}_1 P$, $Q\mathrm{L}_1Q$ is also identically zero. This leads to the elimination of the third term. $\overline{\rho}$ is usually approximated as the initial condition $\overline{\rho}_0$ within the remaining integral. This approximation bears an explanation in further detail. Using the matrices that have been already given, it is possible to explicitly calculate both $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'$ and $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'$. In order to perform this calculation, it is necessary to have an explicit expression for $\rho(t)$. This is done by expressing the initial condition in the superket base $\superket{a,b}$ and assuming that the time evolution is dictated by $\mathrm{L}_0$. In that case both terms can be explicitly calculated and their difference can then be studied to understand how reasonable the approximation is. While the explicit calculation is too cumbersome to include, the great majority of terms are very similar to $$\frac{{c_{\ensuremath{\mathrm{33}}}}\hbar\overline{\ensuremath{\mathrm{\Omega_a}}} \left( \frac{{{\ e}^{\ i t_f\hbar\delta +2 \ i t_f\hbar\Delta }}}{\ i\hbar\delta +2 \ i\hbar\Delta }-\frac{1}{\ i\hbar\delta +2 \ i\hbar\Delta }\right) }{2},$$ where the initial condition has been written as
+    Q\overline{\rho} = \cancel{Q\overline{\rho_0}} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\cancel{\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'}.
+\end{equation} the initial condition $\overline{\rho}_0$ can be chosen so as to have no part in $Q$ which means the first term on the right hand side can be eliminated. As can be verified by straightforward matrix multiplication using the definitions of the projector and of $\mathrm{L}_1$, not only is $P\mathrm{L}_1 P$, $Q\mathrm{L}_1Q$ is also identically zero. This leads to the elimination of the third term. $\overline{\rho}$ is usually approximated as the initial condition $\overline{\rho}_0$ within the remaining integral. This approximation bears an explanation in further detail. Using the matrices that have been already given, it is possible to explicitly calculate both $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'$ and $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'$. In order to perform this calculation, it is necessary to have an explicit expression for $\rho(t)$. This is done by expressing the initial condition in the superket base $\superket{a,b}$ and assuming that the time evolution is dictated by $\mathrm{L}_0$. In that case both terms can be explicitly calculated and their difference can then be studied to understand how reasonable the approximation is. While the explicit calculation is too cumbersome to include, the great majority of terms are of the same magnitude and form as $${c_{\ensuremath{\mathrm{12}}}} \overline{\ensuremath{\mathrm{\Omega_b}}} \left( \frac{{{ e}^{\frac{i a \hbar \delta }{2}+ i a\hbar \Delta }}}{  \hbar \delta +2   \hbar \Delta }-\frac{1}{ \hbar \delta +2   \hbar \Delta }\right) $$ where the initial condition has been written as
 
 \begin{equation}\label{eq:InitialCondition}
     \rho_0 = \sum c_{a,b} \superket{a,b}.
-\end{equation} This means the difference between the exact term and the approximate term is proportional to $\frac{1}{\Delta}$ which is by far the largest parameter. The only exception is two terms proportional to $c_{33}$. Usually, this system is modeled with an initial condition strictly in the lower levels \cite{BrionAdiabatic2006}, so these terms are zero. this means the approximation is justified if terms proportional to $\frac{1}{\Delta}$ are neglected. This approximation is implemented and results in
+\end{equation} This means the difference between the exact term and the approximate term is proportional to $\frac{1}{\Delta}$ which is by far the largest parameter. This means the approximation is justified if terms proportional to $\frac{1}{\Delta}$ are neglected. This approximation is implemented and results in
 
 \begin{equation}
-    Q\overline{\rho} = \frac{1}{i\hbar}\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
+    Q\overline{\rho} = \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
 \end{equation} This equation is substituted in the equation for the $P$ space
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \frac{1}{i\hbar}(\cancel{P\overline{\mathrm{L}}_1P\rho}+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt').  
+   P\dot{\overline{\rho}} = (\cancel{P\overline{\mathrm{L}}_1P\rho}+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt').  
 \end{equation} This is a closed equation for the evolution of the $P$ sub-space part of the density operator. Employing the definition for the decay picture
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \frac{1}{i\hbar}Pe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t Qe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t} Pe^{-\mathrm{L}_0 t}\rho_0 dt'.  
+   P\dot{\overline{\rho}} = Pe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t Qe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t} Pe^{-\mathrm{L}_0 t}\rho_0 dt'.  
 \end{equation} It is often useful to express the projection super-operators as a sum of super-operators that each project into a specific eigenvalue sub-space. That is to say
 
 \begin{align}
@@ -253,40 +253,35 @@ with
 \end{align} where each sum is over all possible eigenvalues in the corresponding sub-space. This leads to 
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \frac{1}{i\hbar}\sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t  q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t  q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
 \end{equation} Only the $Q$ projector has been expanded as all $P$ space eigenvalues are 0. The $e^{\mathrm{L}_0 t}$ super-operator is included into the integral 
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \frac{1}{i\hbar}\sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1\int_0^t  e^{\mathrm{L}_0 t}q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1\int_0^t  e^{\mathrm{L}_0 t}q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
 \end{equation} 
 
 The $\mathrm{L}$ super-operators can be applied to the projectors 
 
 \begin{align}
-    =& \frac{1}{i\hbar}\sum_{\lambda} p_{\lambda_p} e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t}p_{\lambda_p t'} e^{-\lambda_p t'}\rho_0 dt', \nonumber \\ 
-    =& \frac{1}{i\hbar}\sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1p_{\lambda_p}\rho_0 dt' \nonumber \\
-     =& \frac{1}{i\hbar}\sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q (t- t')}q_{\lambda_q}\mathrm{L}_1p_{\lambda_p}\rho_0 dt'.
+    =& \sum_{\lambda} p_{\lambda_p} e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t}p_{\lambda_p t'} e^{-\lambda_p t'}\rho_0 dt', \nonumber \\ 
+    =& \sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1p_{\lambda_p}\rho_0 dt' \nonumber \\
+     =& \sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q (t- t')}q_{\lambda_q}\mathrm{L}_1p_{\lambda_p}\rho_0 dt'.
 \end{align} Performing the integration leads to
 
 \begin{equation}\label{eq:ProyectedEqNoAdiabatic}
-    P\dot{\rho} = \frac{1}{i\hbar}\sum_{\lambda_q} \frac{P \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1P\rho_0}{\lambda_q} (e^{\lambda_q} -1).
+    P\dot{\rho} = \sum_{\lambda_q} \frac{P \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1P\rho_0}{\lambda_q} (e^{\lambda_q t} -1).
 \end{equation} The left-hand side is no longer in the dissipation picture as the exponential cancels with the exponential outside the integration. The sum is over all 4 eigenvalues in the $Q$ sub-space only, the $P$ space eigenvalues do not feature explicitly so the sum is now only over the $Q$ space eigenvalues. these eigenvalues are
 
 \begin{equation}
-    \lambda_q \in [ i\hbar(\pm\Delta+\frac{\delta}{2}), i\hbar(\pm\Delta - \frac{\delta}{2} )].
-\end{equation} These are all rapidly oscillating due to $\Delta$. This means \eqref{eq:ProyectedEqNoAdiabatic} contains two terms, a non-oscillating term and a rapidly oscillating term, which is neglected as the dynamics will be dictated by the non-oscillating term. The sum can be written explicitly as
+    \lambda_q \in [ i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )].
+\end{equation} These are all rapidly oscillating due to $\Delta$. The sum is written explicitly as
 
 \begin{align}
-    P\dot{\rho} = -\frac{1}{\hbar^2}\frac{P \mathrm{L}_1  q_{(\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{\Delta+\frac{\delta}{2}}\\
-    +\frac{1}{\hbar^2}\frac{P \mathrm{L}_1  q_{(-\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{\Delta+\frac{\delta}{2}}\nonumber\\
-    -\frac{1}{\hbar^2}\frac{P \mathrm{L}_1  q_{(\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{\Delta-\frac{\delta}{2}}\nonumber\\
-    +\frac{1}{\hbar^2}\frac{P \mathrm{L}_1  q_{(-\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{\Delta-\frac{\delta}{2}}. \nonumber
-\end{align} This can be grouped written in a more compact fashion as
-
-\begin{align}
-    P\dot{\rho}=& \frac{1}{\hbar^2}\frac{P \mathrm{L}_1  \big(q_{(-\Delta-\frac{\delta}{2})}-q_{(\Delta+\frac{\delta}{2})}\big)\mathrm{L}_1P\rho_0}{\Delta+\frac{\delta}{2}}\\
-    +&\frac{1}{\hbar^2}\frac{P \mathrm{L}_1  \big(q_{(-\Delta+\frac{\delta}{2})}-q_{(\Delta-\frac{\delta}{2})}\big)\mathrm{L}_1P\rho_0}{\Delta-\frac{\delta}{2}}. \nonumber
-\end{align} This expression is calculated through straightforward matrix manipulation. This requires an explicit initial condition. A general initial condition not in the dissipation picture has the form 
+    P\dot{\rho} = &\frac{P \mathrm{L}_1  q_{(\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(\Delta+\frac{\delta}{2})}(e^{i(\Delta+\frac{\delta}{2})t}-1)\\
+    +&\frac{P \mathrm{L}_1  q_{(-\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(-\Delta-\frac{\delta}{2})}(e^{i(-\Delta-\frac{\delta}{2})t}-1)\nonumber\\
+    +&\frac{P \mathrm{L}_1  q_{(\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(\Delta-\frac{\delta}{2})}(e^{i(\Delta-\frac{\delta}{2})t}-1)\nonumber\\
+    +&\frac{P \mathrm{L}_1  q_{(-\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(-\Delta+\frac{\delta}{2})}(e^{i(-\Delta+\frac{\delta}{2})t}-1). \nonumber
+\end{align} This expression can be calculated through straightforward matrix manipulation. This requires an explicit initial condition. A general initial condition not in the dissipation picture has the form 
 
 \begin{equation}
     \rho_0 = \sum_{i,j} c_{i,j}\superket{i,j}, 
@@ -294,32 +289,27 @@ The $\mathrm{L}$ super-operators can be applied to the projectors
 
 \begin{equation}
     \sum_{i,j} \abs{c_{i,j}}^2 = 1.
-\end{equation} As the initial condition may be chosen freely, a condition with excitations only in the lower two levels is chosen and so $c_{3,3} = 0$. Using this initial condition and performing the multiplication leads to, employing the already established bector notation
+\end{equation} As the initial condition may be chosen freely, a condition with excitations only in the lower two levels is chosen and so $c_{3,3} = 0$. This is consistent with previous approximations. The resulting expression is quite lengthy and so calls for a more compact notation. Using the shorthand $$\lambda_{\pm \pm}=i(\pm \Delta \pm \frac{\delta}{2}),$$ and using a simplified initial condition, with all the excitations equally distributed between the states $\superket{1,1}$ and $\superket{2,2}$, the resulting differential equation is
 
 \begin{equation}
-    P\dot{\rho} =\begin{pmatrix}\frac{{c_{\ensuremath{\mathrm{12}}}} \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}-{c_{\ensuremath{\mathrm{21}}}} \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}}{2\hbar\delta +4\hbar\Delta }\\
-\frac{\left( {c_{\ensuremath{\mathrm{12}}}} \ensuremath{\mathrm{\Omega \_ b}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}+\left( {c_{\ensuremath{\mathrm{11}}}}-{c_{\ensuremath{\mathrm{22}}}}\right)  \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}-{c_{\ensuremath{\mathrm{12}}}} \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ a}}}\right)  \delta -2 {c_{\ensuremath{\mathrm{12}}}} \Delta \, \ensuremath{\mathrm{\Omega \_ b}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}+\left( -2 {c_{\ensuremath{\mathrm{22}}}}-2 {c_{\ensuremath{\mathrm{11}}}}\right)  \Delta  \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}-2 {c_{\ensuremath{\mathrm{12}}}} \Delta \, \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ a}}}}{2\hbar{{\delta }^{2}}-8\hbar{{\Delta }^{2}}}\\
+   \dot{\rho}_P = \frac{1}{\sqrt{2}^5}\begin{pmatrix}-\frac{\Omega_a \overline{\Omega_a} \left( {e^{ (t { \lambda_{++}}  )}}-1\right) }{ { \lambda_{++}}}-\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
+-\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}-\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\\
 0\\
--\frac{\left( \left( {c_{\ensuremath{\mathrm{21}}}} \ensuremath{\mathrm{\Omega \_ b}}+\left( {c_{\ensuremath{\mathrm{11}}}}-{c_{\ensuremath{\mathrm{22}}}}\right)  \ensuremath{\mathrm{\Omega \_ a}}\right)  \overline{\ensuremath{\mathrm{\Omega \_ b}}}-{c_{\ensuremath{\mathrm{21}}}} \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ a}}}\right)  \delta +\left( \left( -2 {c_{\ensuremath{\mathrm{22}}}}-2 {c_{\ensuremath{\mathrm{11}}}}\right)  \Delta \, \ensuremath{\mathrm{\Omega \_ a}}-2 {c_{\ensuremath{\mathrm{21}}}} \Delta \, \ensuremath{\mathrm{\Omega \_ b}}\right)  \overline{\ensuremath{\mathrm{\Omega \_ b}}}-2 {c_{\ensuremath{\mathrm{21}}}} \Delta \, \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ a}}}}{2\hbar{{\delta }^{2}}-8\hbar{{\Delta }^{2}}}\\
--\frac{{c_{\ensuremath{\mathrm{12}}}} \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}-{c_{\ensuremath{\mathrm{21}}}} \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}}{2\hbar\delta -4\hbar\Delta }\\
+-\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
+-\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\\
 0\\
 0\\
 0\\
-\frac{2 {c_{\ensuremath{\mathrm{12}}}} \Delta \, \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}-2 {c_{\ensuremath{\mathrm{21}}}} \Delta  \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}}{h {{\delta }^{2}}-4\hbar{{\Delta }^{2}}}\end{pmatrix}.
-\end{equation} These terms are proportional to $\frac{1}{\Delta}$ as the terms that were previously discarded when the approximation to replace $\overline{\rho}(t)$ by $\overline{\rho}_0$, however these terms are proportional to the square of the $\Omega$ frequencies instead of the first power, so they are not of the same scale. A simpler initial condition where only $c_{1,1}$ and $c_{2,2}$ are both the only populated states and are equally populated leads to
+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\end{pmatrix}
+\end{equation}.The $P$ sub-index indicates this is a differential equation only for the $P$ sub-space dynamics. This equation can be expressed in the usual density matrix notation as
 
-\begin{equation}
-    P\dot{\rho} =\begin{pmatrix}0\\
--\frac{\Delta  \overline{\ensuremath{\mathrm{\Omega \_ a}}} \ensuremath{\mathrm{\Omega \_ b}}}{h {{\delta }^{2}}-4\hbar{{\Delta }^{2}}}\\
-0\\
-\frac{\Delta \, \ensuremath{\mathrm{\Omega \_ a}} \overline{\ensuremath{\mathrm{\Omega \_ b}}}}{h {{\delta }^{2}}-4\hbar{{\Delta }^{2}}}\\
-0\\
-0\\
-0\\
-0\\
-0\end{pmatrix}.
-\end{equation} As can be easily verified, these equations are exclusively in the $P$ space and so contain only the slow dynamics of the system.
-
+\begin{align}
+    \dot{\rho}_P =& -\Big(\frac{\Omega_a \overline{\Omega_a} \left( {e^{ (t { \lambda_{++}}  )}}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big) \ketbra{1}{1} \\
+&-\Big(\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\ketbra{1}{2}\nonumber\\
+&-\Big(\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\ketbra{2}{1}\nonumber\\
+&-\Big(\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\ketbra{2}{2}\nonumber \\
+&+\Big(\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\ketbra{3}{3}\nonumber
+\end{align}
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
