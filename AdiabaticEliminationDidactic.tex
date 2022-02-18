@@ -101,8 +101,8 @@ The first example consists of a three level atom in the $\Lambda$ configuration,
 
 \begin{equation}\label{eq:Lambda_Hamiltonian}
     \widehat{H}=\hbar\left[\begin{array}{ccc}
--\frac{\delta}{2} & 0 & \frac{\Omega_{a}^{*}}{2} \\
-0 & \frac{\delta}{2} & \frac{\Omega_{b}^{*}}{2} \\
+-\frac{\delta}{2} & 0 & \frac{\overline{\Omega_{a}}}{2} \\
+0 & \frac{\delta}{2} & \frac{\overline{\Omega_{b}}}{2} \\
 \frac{\Omega_{a}}{2} & \frac{\Omega_{b}}{2} & \Delta
 \end{array}\right].
 \end{equation} Here $\Delta = \frac{\delta_a+\delta_b}{2}$ and $\delta = \delta_a-\delta_b$. $\Omega_a$ and $\Omega_b$ are the Rabbi frequencies of the two lasers. The zero for the energy spectrum is chosen to be the midpoint between the $a$ and $b$ levels. The lasers are assumed to be operating far from resonance such that $\abs{\Delta} \gg \abs{\delta},\abs{\Omega_a}, \abs{\Omega_b}$.The initial condition for the system is assumed to include only the two bottom levels. Since the third level is far detuned from the coupling lasers the objective is to adiabatically eliminate it and find an effective two level Hamiltonian for the system where the $e$ state serves only as a virtual state\cite{Gerry3LA1990}. The projection technique employed here is quite similar to those employed in \cite{NakajimaProyectors1958} and \cite{ZwanzigProyectors1960}. The core idea is to split the eigenvalue space into two parts. One part is the "relevant" part and the other the "irrelevant" part. By projecting the system's Liouville equation into both spaces and finding a closed equation for the relevant part of the system, an effective evolution equation for only the degrees of freedom that are of interest can be found. Physically, the procedure is justified by choosing relevant and irrelevant parts in a way such that they correspond to different time scales.
@@ -173,28 +173,26 @@ and
 with
 
 \begin{equation} \label{}
-   \mathrm{L}_0 = -i\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & - \delta  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 0 & -\frac{ \delta }{2}- \Delta  & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 &  \delta  & 0 & 0 & 0 & 0 & 0\\
+   \mathrm{L}_0 = i\begin{pmatrix}0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & \delta  & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & \Delta+\frac{ \delta }{2}& 0 & 0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 &  -\delta  & 0 & 0 & 0 & 0 & 0\\
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-0 & 0 & 0 & 0 & 0 & \frac{ \delta }{2}- \Delta  & 0 & 0 & 0\\
-0 & 0 & 0 & 0 & 0 & 0 & \frac{ \delta }{2}+ \Delta  & 0 & 0\\
-0 & 0 & 0 & 0 & 0 & 0 & 0 &  \Delta -\frac{ \delta }{2} & 0\\
+0 & 0 & 0 & 0 & 0 & \Delta-\frac{ \delta }{2}  & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & -\Delta-\frac{ \delta }{2}  & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & 0 & 0 &  -\Delta +\frac{ \delta }{2} & 0\\
 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\end{pmatrix},
 \end{equation} and
 
-\begin{equation}
-    \mathrm{L}_1 = -i\begin{pmatrix}0 & 0 & -\frac{ \Omega_a}{2} & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0 & 0\\
-0 & 0 & -\frac{ \Omega_b}{2} & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2} & 0\\
--\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0 & 0 & 0 & 0 & 0 & 0 & \frac{ \Omega_a^*}{2}\\
-0 & 0 & 0 & 0 & 0 & -\frac{ \Omega_a}{2} & \frac{ \Omega_b^*}{2} & 0 & 0\\
-0 & 0 & 0 & 0 & 0 & -\frac{ \Omega_b}{2} & 0 & \frac{ \Omega_b^*}{2} & 0\\
-0 & 0 & 0 & -\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0 & 0 & 0 & \frac{ \Omega_b^*}{2}\\
-\frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & 0 & 0 & 0 & 0 & -\frac{ \Omega_a}{2}\\
-0 & \frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & 0 & 0 & 0 & -\frac{ \Omega_b}{2}\\
-0 & 0 & \frac{ \Omega_a}{2} & 0 & 0 & \frac{ \Omega_b}{2} & -\frac{ \Omega_a^*}{2} & -\frac{ \Omega_b^*}{2} & 0\end{pmatrix}.
-\end{equation} The property
+\begin{equation}\mathrm{L}_1 = i\begin{pmatrix}0 & 0 & \frac{ \overline{\Omega_a}{2}} & 0 & 0 & 0 & -\frac{  \overline{\Omega_a}}{2} & 0 & 0\\
+0 & 0 & \frac{  \overline{\Omega_b}}{2} & 0 & 0 & 0 & 0 & -\frac{  \overline{\Omega_a}}{2} & 0\\
+\frac{  \Omega_a}{2} & \frac{  \Omega_b}{2} & 0 & 0 & 0 & 0 & 0 & 0 & -\frac{  \overline{\Omega_a}}{2}\\
+0 & 0 & 0 & 0 & 0 & \frac{  \overline{\Omega_a}}{2} & -\frac{  \overline{\Omega_b}}{2} & 0 & 0\\
+0 & 0 & 0 & 0 & 0 & \frac{  \overline{\Omega_b}}{2} & 0 & -\frac{  \overline{\Omega_b}}{2} & 0\\
+0 & 0 & 0 & \frac{  \Omega_a{2}} & \frac{  \Omega_b}{2} & 0 & 0 & 0 & -\frac{  \overline{\Omega_b}}{2}\\
+-\frac{  \Omega_a}{2} & 0 & 0 & -\frac{  \Omega_b}{2} & 0 & 0 & 0 & 0 & \frac{ i \overline{\Omega_a}}{2}\\
+0 & -\frac{  \Omega_a}{2} & 0 & 0 & -\frac{  \Omega_b}{2} & 0 & 0 & 0 & \frac{  \overline{\Omega_b}}{2}\\
+0 & 0 & -\frac{  \Omega_a}{2} & 0 & 0 & -\frac{  \Omega_b}{2} & \frac{  \Omega_a}{2} & \frac{  \Omega_b}{2} & 0\end{pmatrix}.\end{equation} The property
 \begin{equation}
     P\mathrm{L}_1P = 0,
 \end{equation} is also fulfilled.  The  property means that $\mathrm{L}_1$ does not map states in the $P$ space into states in the $P$ space. The particular choices for $P$ and $\mathrm{L}_0$ mean that the $P$ space contains all of the $\mathrm{L}_0$ eigenvalues that do not contain the parameter $\Delta$. As this parameter is the largest parameter, the eigenvalues that depend on it will oscillate more rapidly than the rest. The projection technique begins with the Liouville equation
@@ -292,24 +290,41 @@ The $\mathrm{L}$ super-operators can be applied to the projectors
 \end{equation} As the initial condition may be chosen freely, a condition with excitations only in the lower two levels is chosen and so $c_{3,3} = 0$. This is consistent with previous approximations. The resulting expression is quite lengthy and so calls for a more compact notation. Using the shorthand $$\lambda_{\pm \pm}=i(\pm \Delta \pm \frac{\delta}{2}),$$ and using a simplified initial condition, with all the excitations equally distributed between the states $\superket{1,1}$ and $\superket{2,2}$, the resulting differential equation is
 
 \begin{equation}
-   \dot{\rho}_P = \frac{1}{\sqrt{2}^5}\begin{pmatrix}-\frac{\Omega_a \overline{\Omega_a} \left( {e^{ (t { \lambda_{++}}  )}}-1\right) }{ { \lambda_{++}}}-\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
--\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}-\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\\
+   \dot{\rho}_P = \frac{1}{\sqrt{2}^5}\begin{pmatrix}-\frac{\Omega_a \overline{\Omega_a} \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}-\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
+-\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}-\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\\
 0\\
--\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
+-\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
 -\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\\
 0\\
 0\\
 0\\
-\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\end{pmatrix}
-\end{equation}.The $P$ sub-index indicates this is a differential equation only for the $P$ sub-space dynamics. This equation can be expressed in the usual density matrix notation as
+\frac{\Omega_a^2 \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b^2\left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a^2\left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\end{pmatrix}.
+\end{equation}The $P$ sub-index indicates this is a differential equation only for the $P$ sub-space dynamics. This equation can be expressed as
 
 \begin{align}
-    \dot{\rho}_P =& -\Big(\frac{\Omega_a \overline{\Omega_a} \left( {e^{ (t { \lambda_{++}}  )}}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big) \ketbra{1}{1} \\
-&-\Big(\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\ketbra{1}{2}\nonumber\\
-&-\Big(\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\ketbra{2}{1}\nonumber\\
-&-\Big(\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\ketbra{2}{2}\nonumber \\
-&+\Big(\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\ketbra{3}{3}\nonumber
-\end{align}
+    \dot{\rho}_P =& - \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a \overline{\Omega_a} \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big) \superket{1,1} \\
+&- \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\superket{1,2}\nonumber\\
+&- \frac{1}{\sqrt{2}^5}\Big(\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{2,1}\nonumber\\
+&- \frac{1}{\sqrt{2}^5}\Big( \frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\superket{2,2}\nonumber \\
+&+ \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a^2 \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b^2\left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a^2\left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{3,3}\nonumber.
+\end{align} Here it can be seen that the third energy level has been effectively de-coupled from the first two as its evolution is completely independent of the other two levels. Thus it is possible to write
+
+\begin{align}
+        \dot{\rho}_{1,2} =& - \frac{1}{\sqrt{2}^5}\Big(\frac{\abs{\Omega_a}^2 \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\abs{\Omega_a}^2 \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{1,1} \\
+&- \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\superket{1,2}\nonumber\\
+&- \frac{1}{\sqrt{2}^5}\Big(\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{2,1}\nonumber\\
+&- \frac{1}{\sqrt{2}^5}\Big( \frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\superket{2,2}\nonumber.
+\end{align} It is then possible to write an effective superoperator $\mathrm{L}_1^{eff}$ such that 
+
+\begin{equation}
+    \dot{\rho}_{1,2}=\mathrm{L}_1^{eff}\rho_{1,2}.
+\end{equation} will model the time evolution of only the $\superket{1,1}$ and $\superket{2,2}$ states. Clearly $\rho_{1,2}$ has four entries and $\mathrm{L}_1^{eff}$ can be written as
+
+\begin{equation}
+    \mathrm{L}_1^{eff} = \frac{1}{\sqrt{2}^5}\begin{pmatrix}
+    
+    \end{pmatrix}
+\end{equation}
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
