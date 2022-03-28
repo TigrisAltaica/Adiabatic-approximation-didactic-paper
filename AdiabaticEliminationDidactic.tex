@@ -226,24 +226,48 @@ with
 \end{align} The equation for the $Q$ space is then solved via formal integration resulting in
 
 \begin{equation}
-    Q\overline{\rho} = \cancel{Q\overline{\rho_0}} + \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\cancel{\int_0^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'}.
-\end{equation} the initial condition $\overline{\rho}_0$ can be chosen so as to have no part in $Q$ which means the first term on the right hand side can be eliminated. As can be verified by straightforward matrix multiplication using the definitions of the projector and of $\mathrm{L}_1$, not only is $P\mathrm{L}_1 P$, $Q\mathrm{L}_1Q$ is also identically zero. This leads to the elimination of the third term. $\overline{\rho}$ is usually approximated as the initial condition $\overline{\rho}_0$ within the remaining integral. This approximation bears an explanation in further detail. Using the matrices that have been already given, it is possible to explicitly calculate both $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'$ and $\int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'$. In order to perform this calculation, it is necessary to have an explicit expression for $\rho(t)$. This is done by expressing the initial condition in the superket base $\superket{a,b}$ and assuming that the time evolution is dictated by $\mathrm{L}_0$. In that case both terms can be explicitly calculated and their difference can then be studied to understand how reasonable the approximation is. While the explicit calculation is too cumbersome to include, the great majority of terms are of the same magnitude and form as $${c_{\ensuremath{\mathrm{12}}}} \overline{\ensuremath{\mathrm{\Omega_b}}} \left( \frac{{{ e}^{\frac{i a \hbar \delta }{2}+ i a\hbar \Delta }}}{  \hbar \delta +2   \hbar \Delta }-\frac{1}{ \hbar \delta +2   \hbar \Delta }\right) $$ where the initial condition has been written as
+    Q\overline{\rho} = \cancel{Q\overline{\rho_0}} + \int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'+\cancel{\int_{t_0}^t Q\overline{\mathrm{L}}_1Q\overline{\rho}(t') dt'}.
+\end{equation} the initial condition $\overline{\rho}_0$ can be chosen so as to have no part in $Q$ which means the first term on the right hand side can be eliminated. As can be verified by straightforward matrix multiplication using the definitions of the projector and of $\mathrm{L}_1$, not only is $P\mathrm{L}_1 P$, $Q\mathrm{L}_1Q$ is also identically zero. This leads to the elimination of the third term. $\overline{\rho}$ is usually approximated as the initial condition $\overline{\rho}_0$ within the remaining integral. This approximation bears an explanation in further detail. It is assumed that the initial condition evolves according to $\mathrm{L}_0$ so that
 
-\begin{equation}\label{eq:InitialCondition}
-    \rho_0 = \sum c_{a,b} \superket{a,b}.
-\end{equation} This means the difference between the exact term and the approximate term is proportional to $\frac{1}{\Delta}$ which is by far the largest parameter. This means the approximation is justified if terms proportional to $\frac{1}{\Delta}$ are neglected. This approximation is implemented and results in
+\begin{equation}\label{eq:InitialConditionDef}
+\rho(t) = e^{\mathrm{L}_0 t}\rho(t_0),
+\end{equation} and that $\rho(t_0)$ is completely in $P$ so that it can be expressed as
+
+\begin{equation}\label{eq:InitialConditionDefPSpace}
+    \rho(t_0) = \sum_{\lambda_p} \rho_{\lambda_p}(t_0),
+\end{equation} where the sum is over all of the sub-states in $P$. Returning to the term $\int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'$ and using the definition of the dissipation picture, this term can be written as
+
+\begin{align}
+    \int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'=&\int_{t_0}^t Qe^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}Pe^{-\mathrm{L}_0 t'}\rho(t') dt', \nonumber \\
+    =&\int_{t_0}^t Qe^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t'}Pe^{-\lambda_p t'}\rho(t') dt'.
+\end{align} And using equations \eqref{eq:InitialConditionDef} and \eqref{eq:InitialConditionDefPSpace}
+
+\begin{align}
+  \int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t') dt'=&\sum_{\lambda}\int_{t_0}^t q_{\lambda_q} e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t'}p_{\lambda_p} e^{-\lambda_p t'}e^{\mathrm{L}_0 t'}\rho_{\lambda_p}(t_0)dt' \\
+  =& \sum_{\lambda}\int_{t_0}^t q_{\lambda_q} e^{-\lambda_q t'}\mathrm{L}_1p_{\lambda_q} e^{\lambda_p t'}\rho_{\lambda_p(t_0)} \nonumber dt' \\
+  =& \sum_{\lambda} q_{\lambda_q} \mathrm{L}_1p_{\lambda_p}\rho_{\lambda_p(t_0)} \int_{t_0}^t e^{-\lambda_q t'} e^{\lambda_p t'} dt' \nonumber \\
+  =&\sum_{\lambda} q_{\lambda_q} \mathrm{L}_1p_{\lambda_p}\rho_{\lambda_p(t_0)} \int_{t_0}^t e^{(\lambda_p-\lambda_q) t'}dt' \nonumber \\
+  =&\sum_{\lambda} q_{\lambda_q} \mathrm{L}_1p_{\lambda_p}\rho_{\lambda_p(t_0)} \Bigg(\frac{e^{(\lambda_p-\lambda_q) t}-e^{(\lambda_p-\lambda_q) t_0}}{(\lambda_p-\lambda_q)}\Bigg).\nonumber
+\end{align} This same procedure can be performed for the approximate term where $\overline{\rho(t')}$ is replaced by $\overline{\rho(t_0)}$
+
+\begin{align}
+  \int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}(t_0) dt'\approx&\sum_{\lambda}\int_{t_0}^t q_{\lambda_q} e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t'}p_{\lambda_p} e^{-\lambda_p t_0}\rho_{\lambda_p}(t_0)dt'\\
+  =&\sum_{\lambda}\int_{t_0}^t q_{\lambda_q} e^{-\lambda_q t'}e^{\lambda_p t'}\mathrm{L}_1p_{\lambda_p} e^{-\lambda_p t_0}\rho_{\lambda_p}(t_0)dt' \nonumber\\
+  =&\sum_{\lambda} q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_{\lambda_p}(t_0) \int_{t_0}^te^{\lambda_p-\lambda_q t'}dt'e^{-\lambda_p t_0} \nonumber\\
+   =&\sum_{\lambda} q_{\lambda_q}\mathrm{L}_1p_{\lambda_q} \rho_{\lambda_p}(t_0) \Bigg(\frac{e^{(\lambda_p-\lambda_q) t}-e^{(\lambda_p-\lambda_q) t_0}}{\lambda_p-\lambda_q}\Bigg)e^{-\lambda_p t_0}. \nonumber
+\end{align} The difference is thus a phase in the case where $\lambda_q \gg \lambda_p$ this difference can be neglected.This approximation is thus implemented and results in
 
 \begin{equation}
-    Q\overline{\rho} = \int_0^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
+    Q\overline{\rho} = \int_{t_0}^t Q\overline{\mathrm{L}}_1P\overline{\rho}_0 dt'.
 \end{equation} This equation is substituted in the equation for the $P$ space
 
 \begin{equation}
-   P\dot{\overline{\rho}} = (\cancel{P\overline{\mathrm{L}}_1P\rho}+P\overline{\mathrm{L}}_1\int_0^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt').  
+   P\dot{\overline{\rho}} = (\cancel{P\overline{\mathrm{L}}_1P\rho}+P\overline{\mathrm{L}}_1\int_{t_0}^t Q\overline{\mathrm{L}}_1 P\overline{\rho}_0 dt').  
 \end{equation} This is a closed equation for the evolution of the $P$ sub-space part of the density operator. Employing the definition for the decay picture
 
 \begin{equation}
-   P\dot{\overline{\rho}} = Pe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t Qe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t} Pe^{-\mathrm{L}_0 t}\rho_0 dt'.  
-\end{equation} It is often useful to express the projection super-operators as a sum of super-operators that each project into a specific eigenvalue sub-space. That is to say
+   P\dot{\overline{\rho}} = Pe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_{t_0}^t Qe^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t} Pe^{-\mathrm{L}_0 t_0}\rho_0 dt'.  
+\end{equation} Here the fact that $\rho_0 = \rho(t_0)$ has been used. It is often useful to express the projection super-operators as a sum of super-operators that each project into a specific eigenvalue sub-space. That is to say
 
 \begin{align}
     P =& \sum_{\lambda_p} p_{\lambda_p},\\
@@ -251,20 +275,33 @@ with
 \end{align} where each sum is over all possible eigenvalues in the corresponding sub-space. This leads to 
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_0^t  q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1e^{\mathrm{L}_0 t}\int_{t_0}^t  q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t_0}\rho_0 dt'.  
 \end{equation} Only the $Q$ projector has been expanded as all $P$ space eigenvalues are 0. The $e^{\mathrm{L}_0 t}$ super-operator is included into the integral 
 
 \begin{equation}
-   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1\int_0^t  e^{\mathrm{L}_0 t}q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t'}\rho_0 dt'.  
+   P\dot{\overline{\rho}} = \sum_{\lambda} p_{\lambda_p} e^{-\mathrm{L}_0 t}\mathrm{L}_1\int_{t_0}^t  e^{\mathrm{L}_0 t}q_{\lambda_q}e^{-\mathrm{L}_0 t'}\mathrm{L}_1e^{\mathrm{L}_0 t'}p_{\lambda_p} e^{-\mathrm{L}_0 t_0}\rho_0 dt'.  
 \end{equation} 
 
 The $\mathrm{L}$ super-operators can be applied to the projectors 
 
 \begin{align}
-    =& \sum_{\lambda} p_{\lambda_p} e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t}p_{\lambda_p t'} e^{-\lambda_p t'}\rho_0 dt', \nonumber \\ 
-    =& \sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1p_{\lambda_p}\rho_0 dt' \nonumber \\
-     =& \sum_{\lambda} p_{\lambda_p}  e^{-\lambda_p t}\mathrm{L}_1\int_0^t  e^{\lambda_q (t- t')}q_{\lambda_q}\mathrm{L}_1p_{\lambda_p}\rho_0 dt'.
-\end{align} Performing the integration leads to
+    =& \sum_{\lambda} p_{\lambda_p} e^{-\lambda_p t}\mathrm{L}_1\int_{t_0}^t  e^{\lambda_q t}q_{\lambda_q}e^{-\lambda_q t'}\mathrm{L}_1e^{\lambda_p t'}p_{\lambda_p} e^{-\lambda_p t_0}\rho_0 dt' \\
+    =& \sum_{\lambda} p_{\lambda_p} \cancel{e^{-\lambda_p t}}\mathrm{L}_1e^{\lambda_q t}\Bigg(\int_{t_0}^te^{-\lambda_q t'+\lambda_p t'}dt'\Bigg)e^{-\lambda_p t_0}  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0.\label{eq:grouped_integral_3LA}
+\end{align} Here the terms have been re-arranged taking advantage that the exponentials, once applied to the projectors, are simply numbers. The first exponential in the RHS of equation \eqref{eq:grouped_integral_3LA} cancels out the same exponential that is on the LHS of the same equation. Before performing the integration, the variable change $\Delta t = t-t_0$ is used, leading to
+
+\begin{equation}
+    P\dot{\rho}=\sum_{\lambda} p_{\lambda_p} \mathrm{L}_1e^{\lambda_q t}\Bigg(\int_{t-\Delta t}^te^{t'(\lambda_p-\lambda_q) }dt'\Bigg)e^{-\lambda_p( t-\Delta t)}  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0.
+\end{equation}
+
+Performing the integration leads involves only what is inside the parenthesis
+
+\begin{equation}
+  \Bigg(\int_{t-\Delta t}^te^{t'(\lambda_p-\lambda_q) }dt'\Bigg) = \frac{e^{(\lambda_p-\lambda_q)t}-e^{(\lambda_p-\lambda_q)(t-\Delta t)}}{\lambda_p-\lambda_q}.  
+\end{equation} Multiplying by the other exponentials in the RHS which were not integrated leads to
+
+\begin{equation}
+    P\dot{\rho}=\sum_{\lambda} p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0\Bigg(\frac{e^{(\lambda_p-\lambda_q)t}-e^{(\lambda_p-\lambda_q)(t-\Delta t)}}{\lambda_p-\lambda_q}\Bigg).
+\end{equation}
 
 \begin{equation}\label{eq:ProyectedEqNoAdiabatic}
     P\dot{\rho} = \sum_{\lambda_q} \frac{P \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1P\rho_0}{\lambda_q} (e^{\lambda_q t} -1).
@@ -314,38 +351,32 @@ The $\mathrm{L}$ super-operators can be applied to the projectors
 &- \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\superket{1,2}\nonumber\\
 &- \frac{1}{\sqrt{2}^5}\Big(\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{2,1}\nonumber\\
 &- \frac{1}{\sqrt{2}^5}\Big( \frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\superket{2,2}\nonumber.
-\end{align} It is then possible to write an effective superoperator $\mathrm{L}_1^{eff}$ such that 
+\end{align} It is then possible to write an effective super-operator $\mathrm{L}_1^{eff}$ such that 
 
 \begin{equation}
-    \dot{\rho}_{1,2}=\mathrm{L}_1^{eff}\rho_{1,2}.
-\end{equation} will model the time evolution of only the $\superket{1,1}$ and $\superket{2,2}$ states. Clearly $\rho_{1,2}$ has four entries and $\mathrm{L}_1^{eff}$ can be written as
-
-\begin{equation}
-    \mathrm{L}_1^{eff} = \frac{1}{\sqrt{2}^5}\begin{pmatrix}
-    
-    \end{pmatrix}
-\end{equation}
+    \dot{\rho}_{1,2}=\mathrm{L}_{eff}\rho_{1,2}.
+\end{equation} 
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
 
-Possibly the most basic and perhaps most physically intuitive implementation of an optomechanical system is a Fabry-Perot cavity with a movable end mirror. These types of systems, formed by an optical cavity composed of two parallel, semi-transparent mirrors with one of the mirrors being suspended or otherwise able to move under the constraint of a harmonic potential, date back to experiments in gravitational interferometry \cite{AbramoviciLIGO1992}. For the purposes of this paper,  the standard optomechanical Hamiltonian detailed in \cite{LawMovingMirror1995} is used
+Arguably the simplest and perhaps most physically intuitive implementation of an optomechanical system is a Fabry-Perot cavity with a movable end mirror. These types of systems, comprised by an optical cavity composed of two parallel, semi-transparent mirrors with one of the mirrors being suspended or otherwise able to move under the constraint of a harmonic potential, date back to experiments in gravitational interferometry \cite{AbramoviciLIGO1992}. For the purposes of this exercise,  the standard optomechanical Hamiltonian detailed in \cite{LawMovingMirror1995}
 
 \begin{equation}\label{eq:basic_hamiltonian}
-    H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x.
-\end{equation} Here, $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. The parameter $g_0$ is the vacuum optomechanical coupling strength and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
+    H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x,
+\end{equation}  is used. Here, $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. The parameter $g_0$ is the vacuum optomechanical coupling strength, indicating the strength of the interaction between one photon and one phonon, and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
 
 \begin{equation}\label{eq:Optomechanic_hamiltonian}
     H_{opt}=-\hbar \delta a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x + \Omega(a^\dagger+a),
-\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, which requires additional considerations.
+\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, for example photon leakage due to the semi-transparent end mirrors, which requires additional considerations.
 
 \subsection{Optomechanical master equation}
 
-Dissipation is modeled in this paper through the use of a master equation \cite{CarmichaelQuantumOptics1999}. A master equation models the interaction between a system of interest, often referred to as the central system, and a larger system often referred to as a reservoir, which represents the environment. In this manner, dissipation is modeled as an energy exchange between the system of interest and the reservoir. During the derivation, the reservoir degrees of freedom are traced out and the result is an equation that only models the evolution of the central system but which accounts for the energy it exchanges with its environment. In the case of the basic optomechanical system introduced above, the master equation is
+Dissipation can be modeled through the use of a master equation \cite{CarmichaelQuantumOptics1999}. A master equation models the interaction between a system of interest, often referred to as the central system, and a larger system often referred to as a reservoir, which represents the environment. In this manner, dissipation is modeled as an energy exchange between the system of interest and the reservoir. Both systems, when combined, form a closed system. During the derivation, the reservoir degrees of freedom are traced out and the result is an equation that only models the evolution of the central system but which accounts for the energy it exchanges with its environment. In the case of the basic optomechanical system introduced above, the master equation is
 
 \begin{equation} \label{eq:OptoMechanicalMasterEquation}
 \dot{\rho} = \frac{1}{i\hbar}[H,\rho] +L_a\rho + L_b \rho.
-\end{equation} The $L$ terms are in what is known as Lindblad form 
+\end{equation} The $\mathrm{L}$ terms are in what is known as Lindblad form 
 
 \begin{align}
 L_a \rho =& - \frac{\kappa}{2}(n_p + 1)[a^\dagger a\rho + \rho a^\dagger a -2a\rho a^\dagger]  \\
@@ -355,15 +386,15 @@ L_a \rho =& - \frac{\kappa}{2}(n_p + 1)[a^\dagger a\rho + \rho a^\dagger a -2a\r
 \begin{align}
 L_b \rho =& - \frac{\gamma}{2}(n_m + 1)[b^\dagger b\rho + \rho b^\dagger b -2b\rho b^\dagger]  \\
  &- \frac{\gamma}{2}(n_m)[ bb^\dagger\rho + \rho  bb^\dagger -2b^\dagger\rho b]\, .\nonumber
-\end{align} In order to find a master equation that models optomechanical cooling it is often necessary to find a convenient eigenbasis for these kinds of super operators. The basis employed here is known as the damping basis and will be introduced in detail. 
+\end{align} $\mathrm{L}_a$ models the dissipation of the electromagnetic field within the cavity and $\mathrm{L}_b$ models the dissipation of the mechanic excitations in the mechanical resonator, there are two dissipation terms as the system is coupled to two different reservoirs, a photonic reservoir and a phononic reservoir. $\kappa$ and $\gamma$ are the respective dissipation coefficients. $n_p$ and $n_m$ are the thermal occupation numbers for the photon reservoir and the mechanical reservoir at the respective resonant frequencies of the modes being considered. In order to find a master equation that models optomechanical cooling it is often necessary to find a convenient eigenbasis for these kinds of super operators, as the $\mathrm{L}$ terms are known. The basis employed here is known as the damping basis and will now be introduced in detail. 
 
 \section{The damping basis}
 
-When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is often desirable to be able to write the density operator in a convenient manner.  In the presence of dissipation however, the problem is complex. Here we illustrate the use of a basis particularly suited for these types of problems, the damping basis \cite{BriegelDampingBasis1993}. For the purpose of this exercise, the discussion is limited to the case of a cavity with dissipation, modeled by
+When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is often desirable to be able to write the density operator in a convenient manner.  In the presence of dissipation however, the problem is not necessarily straightforward. Here the use of a basis particularly suited for these types of problems, known as the damping basis \cite{BriegelDampingBasis1993}, is illustrated. For the purpose of this exercise, the discussion is limited to the case of a cavity with photon dissipation, modeled by
 
 \begin{equation}\label{eq:DampingBasisMasterEquation}
-    \dot{\rho} = \frac{1}{i\hbar}[\hbar \omega a^\dagger a,\rho] +L_a\rho = \mathcal{L}\rho.
-\end{equation} $\mathcal{L}$ is the complete Liouville operator which includes both $H$ and $L$. $\mathcal{L}$ and $L$ act on the density operator $\rho$ which itself acts on vectors in the Hilbert space vectors, so sometimes $\mathcal{L}$ and $L$ are referred to as super operators. If it is assumed that \ref{eq:DampingBasisMasterEquation} has been solved and all of the eigenvalues are known, then it would be possible to write the density operator's initial state as an expansion
+    \dot{\rho} = \frac{1}{i\hbar}[\hbar \omega a^\dagger a,\rho] +\mathrm{L}_a\rho = \mathcal{L}\rho.
+\end{equation} $\mathcal{L}$ is the complete Liouville super operator which includes both $H$ and $\mathrm{L}$. $\mathcal{L}$ and $\mathrm{L}$ act on the density operator $\rho$ which itself acts on Hilbert space vectors, so sometimes $\mathcal{L}$ and $\mathrm{L}$ are referred to as super operators. If it is assumed that \ref{eq:DampingBasisMasterEquation} has been solved and all of the eigenvalues are known, then it would be possible to write the density operator's initial state as an expansion
 
 \begin{equation}
     \rho(0) = \sum_{\lambda} \check{c}_{\lambda} \hat{\rho}_{\lambda}, 
@@ -379,7 +410,7 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 
 \begin{equation}
     Tr[\hat{\rho}_{\lambda} \check{\rho}_{\lambda'}] = \delta_{\lambda,\lambda'}. 
-\end{equation} Dual and regular states are different, but produce the same eigenvalues
+\end{equation} Dual and regular states are different, but correspond to the same eigenvalues
 
 \begin{align}
     \mathcal{L}\hat{\rho}_\lambda =& \lambda \hat{\rho}_\lambda, \\
@@ -389,7 +420,7 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 \begin{align}
   \hat{\rho}_n^k=& a^{\dagger k} \frac{(-1)^{n}}{(1+n_p)^{k+1}}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right):  \quad k \geq 0 \nonumber\\
     \hat{\rho}_n^k=& \frac{(-1)^{n}}{(1+n_p)^{|k|+1}}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right): a^{|k|}  \quad k \leq 0 . \nonumber
-\end{align} Here the $L_n^k$ are the associated Laguerre polynomials. Here $n_p$ refers to the average thermal occupation of the thermal bath in contact with the cavity. $k$ and $n$ fulfill
+\end{align} Here the $L_n^k$ are the associated Laguerre polynomials. $k$ and $n$ fulfill
 
 \begin{align}
     n=&0,1,2,\dots \\
@@ -398,7 +429,7 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 
 \begin{equation}
     \lambda_n^k=-\kappa (n+\frac{\abs{k}}{2}).
-\end{equation} It's worth noting that the eigenvalues are always non-positive, as these types of states decay in time. The dual states are similar and given by
+\end{equation} It's worth noting that the eigenvalues are always non-positive, as these types of states decay over time. The dual states are similar and given by
 
 \begin{align}
     \check{\rho}_n^k=&\left(\frac{-n_p}{1+n_p}\right)^{n} \frac{n !}{(n+k) !}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{n_p}\right]: a^{k} \quad  k \geq 0, \nonumber \\
