@@ -300,62 +300,18 @@ Performing the integration leads involves only what is inside the parenthesis
 \end{equation} Multiplying by the other exponentials in the RHS which were not integrated leads to
 
 \begin{equation}
-    P\dot{\rho}=\sum_{\lambda} p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0\Bigg(\frac{e^{(\lambda_p-\lambda_q)t}-e^{(\lambda_p-\lambda_q)(t-\Delta t)}}{\lambda_p-\lambda_q}\Bigg).
-\end{equation}
+    P\dot{\rho}=\sum_{\lambda} p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0\Bigg(\frac{e^{\lambda_p\Delta t}-e^{\lambda_q \Delta t}}{\lambda_p-\lambda_q}\Bigg).
+\end{equation} As previously stated, the sum is over all possible eigenvalues. Here, there are two factors that depend on the length of the integration interval $\Delta t$. Both are oscillating terms as the $\lambda$ values are imaginary. However, the exponentials corresponding to the $\lambda_q$ values will oscillate much more rapidly than the exponentials corresponding to the $\lambda_p$ values as $\lambda_q \gg \lambda_p$. Because of this, the systems evolution will be dominated by the slower term and the fast term is discarded. This means the fast time scale has been adiabatically eliminated. This approximation leads to the equation
 
-\begin{equation}\label{eq:ProyectedEqNoAdiabatic}
-    P\dot{\rho} = \sum_{\lambda_q} \frac{P \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1P\rho_0}{\lambda_q} (e^{\lambda_q t} -1).
-\end{equation} The left-hand side is no longer in the dissipation picture as the exponential cancels with the exponential outside the integration. The sum is over all 4 eigenvalues in the $Q$ sub-space only, the $P$ space eigenvalues do not feature explicitly so the sum is now only over the $Q$ space eigenvalues. these eigenvalues are
+\begin{equation}\label{eq:ProyectedEqAfterAdiabatic}
+    P\dot{\rho} \approx \sum_{\lambda_q,\lambda_p} \frac{p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p}\rho_0}{\lambda_p-\lambda_q} e^{\lambda_p t}.
+\end{equation} The sum is over all eigenvalues, these are
 
-\begin{equation}
-    \lambda_q \in [ i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )].
-\end{equation} These are all rapidly oscillating due to $\Delta$. The sum is written explicitly as
-
-\begin{align}
-    P\dot{\rho} = &\frac{P \mathrm{L}_1  q_{(\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(\Delta+\frac{\delta}{2})}(e^{i(\Delta+\frac{\delta}{2})t}-1)\\
-    +&\frac{P \mathrm{L}_1  q_{(-\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(-\Delta-\frac{\delta}{2})}(e^{i(-\Delta-\frac{\delta}{2})t}-1)\nonumber\\
-    +&\frac{P \mathrm{L}_1  q_{(\Delta-\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(\Delta-\frac{\delta}{2})}(e^{i(\Delta-\frac{\delta}{2})t}-1)\nonumber\\
-    +&\frac{P \mathrm{L}_1  q_{(-\Delta+\frac{\delta}{2})}\mathrm{L}_1P\rho_0}{i(-\Delta+\frac{\delta}{2})}(e^{i(-\Delta+\frac{\delta}{2})t}-1). \nonumber
-\end{align} This expression can be calculated through straightforward matrix manipulation. This requires an explicit initial condition. A general initial condition not in the dissipation picture has the form 
-
-\begin{equation}
-    \rho_0 = \sum_{i,j} c_{i,j}\superket{i,j}, 
-\end{equation} with
-
-\begin{equation}
-    \sum_{i,j} \abs{c_{i,j}}^2 = 1.
-\end{equation} As the initial condition may be chosen freely, a condition with excitations only in the lower two levels is chosen and so $c_{3,3} = 0$. This is consistent with previous approximations. The resulting expression is quite lengthy and so calls for a more compact notation. Using the shorthand $$\lambda_{\pm \pm}=i(\pm \Delta \pm \frac{\delta}{2}),$$ and using a simplified initial condition, with all the excitations equally distributed between the states $\superket{1,1}$ and $\superket{2,2}$, the resulting differential equation is
-
-\begin{equation}
-   \dot{\rho}_P = \frac{1}{\sqrt{2}^5}\begin{pmatrix}-\frac{\Omega_a \overline{\Omega_a} \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}-\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
--\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}-\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\\
-0\\
--\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\\
--\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}-\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\\
-0\\
-0\\
-0\\
-\frac{\Omega_a^2 \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b^2\left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a^2\left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\end{pmatrix}.
-\end{equation}The $P$ sub-index indicates this is a differential equation only for the $P$ sub-space dynamics. This equation can be expressed as
-
-\begin{align}
-    \dot{\rho}_P =& - \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a \overline{\Omega_a} \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_a \overline{\Omega_a} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big) \superket{1,1} \\
-&- \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\superket{1,2}\nonumber\\
-&- \frac{1}{\sqrt{2}^5}\Big(\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{2,1}\nonumber\\
-&- \frac{1}{\sqrt{2}^5}\Big( \frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b \overline{\Omega_b} \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\superket{2,2}\nonumber \\
-&+ \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a^2 \left( {{e}^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\Omega_b^2\left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_b^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}+\frac{\Omega_a^2\left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{3,3}\nonumber.
-\end{align} Here it can be seen that the third energy level has been effectively de-coupled from the first two as its evolution is completely independent of the other two levels. Thus it is possible to write
-
-\begin{align}
-        \dot{\rho}_{1,2} =& - \frac{1}{\sqrt{2}^5}\Big(\frac{\abs{\Omega_a}^2 \left( {e^{ t { \lambda_{++}}  }}-1\right) }{ { \lambda_{++}}}+\frac{\abs{\Omega_a}^2 \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{1,1} \\
-&- \frac{1}{\sqrt{2}^5}\Big(\frac{\Omega_a\overline{\Omega_b} \left( {{e}^{ t { \lambda_{++}}  }}-1\right)  }{ { \lambda_{++}}}+\frac{\overline{\Omega_a}\Omega_b \left( {{e}^{ t { \lambda_{-+}}  }}-1\right)  }{ { \lambda_{-+}}}\Big)\superket{1,2}\nonumber\\
-&- \frac{1}{\sqrt{2}^5}\Big(\frac{\overline{\Omega_a} \Omega_b \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\Omega_a \overline{\Omega_b} \left( {{e}^{ t { \lambda_{--}}  }}-1\right) }{ { \lambda_{--}}}\Big)\superket{2,1}\nonumber\\
-&- \frac{1}{\sqrt{2}^5}\Big( \frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{+-}}  }}-1\right) }{ { \lambda_{+-}}}+\frac{\abs{\Omega_b}^2 \left( {{e}^{ t { \lambda_{-+}}  }}-1\right) }{ { \lambda_{-+}}}\Big)\superket{2,2}\nonumber.
-\end{align} It is then possible to write an effective super-operator $\mathrm{L}_1^{eff}$ such that 
-
-\begin{equation}
-    \dot{\rho}_{1,2}=\mathrm{L}_{eff}\rho_{1,2}.
-\end{equation} 
+\begin{align*}
+    \lambda_q &\in [ i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )],\\
+    \lambda_p &\in [0,0,0, \pm i\delta].
+\end{align*}
+    
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
