@@ -301,17 +301,28 @@ Performing the integration leads involves only what is inside the parenthesis
 
 \begin{equation}
     P\dot{\rho}=\sum_{\lambda} p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p} \rho_0\Bigg(\frac{e^{\lambda_p\Delta t}-e^{\lambda_q \Delta t}}{\lambda_p-\lambda_q}\Bigg).
-\end{equation} As previously stated, the sum is over all possible eigenvalues. Here, there are two factors that depend on the length of the integration interval $\Delta t$. Both are oscillating terms as the $\lambda$ values are imaginary. However, the exponentials corresponding to the $\lambda_q$ values will oscillate much more rapidly than the exponentials corresponding to the $\lambda_p$ values as $\lambda_q \gg \lambda_p$. Because of this, the systems evolution will be dominated by the slower term and the fast term is discarded. This means the fast time scale has been adiabatically eliminated. This approximation leads to the equation
-
-\begin{equation}\label{eq:ProyectedEqAfterAdiabatic}
-    P\dot{\rho} \approx \sum_{\lambda_q,\lambda_p} \frac{p_{\lambda_p} \mathrm{L}_1  q_{\lambda_q}\mathrm{L}_1p_{\lambda_p}\rho_0}{\lambda_p-\lambda_q} e^{\lambda_p t}.
-\end{equation} The sum is over all eigenvalues, these are
+\end{equation} Since $\Delta t=t-t_0$, and the initial time can be freely chosen, the change from $\Delta t$ to $t$ can be made with no loss of generalization. It is worth remembering sum is over all eigenvalues, these are
 
 \begin{align*}
     \lambda_q &\in [ i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )],\\
     \lambda_p &\in [0,0,0, \pm i\delta].
-\end{align*}
-    
+\end{align*} Employing a generic starting condition in the $P$ subspace such that
+
+\begin{equation}
+    \rho(0)_P = \sum_{\lambda_p} c_{\lambda_p} \rho_{\lambda_p},
+\end{equation} which comprises the states $\superket{1,1}$,$\superket{1,2}$,$\superket{2,1}$,$\superket{2,2}$ and$\superket{3,3}$, leads to and evolution equation for only the $P$ subspace part of the system. This is a vector equation with five non-zero entries which lead to five uncoupled equations for the time evolution of all the $P$ subspace states. The first entry is
+
+\begin{equation}
+    \dot{\rho_P}_1 = -\frac{\ i c_{11} |\Omega_a|^2 \left( 1-{{\ e}^{\ i t\, \left( \Delta+\frac{\delta }{2} \right) }}\right) }{4 \left(\Delta+\frac{\delta }{2} \right) }+\frac{\ i c_{11} |\Omega_a|^2 \left( 1-{{\ e}^{ -i t \left( \Delta+\frac{\delta }{2} \right) }}\right) }{4 \left(\Delta+ \frac{\delta }{2} \right) }.
+\end{equation} This entry corresponds to the state $\superket{1,1}$. As can be readily checked, the constant terms cancel out and this first entry simplifies to
+
+\begin{equation}
+    \dot{\rho_P}_1 = -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}.
+\end{equation} The equation corresponding to the state $\superket{1,2}$ has a slightly different structure
+
+\begin{equation}
+   \dot{\rho_P}_2 =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 \left( {{ e}^{ i t \delta }}-{{ e}^{ i t\, \left( \Delta+\frac{\delta }{2} \right) }}\right) }{ \left( -\Delta + \frac{\delta}{2}  \right)  }+\frac{|\Omega_a|^2\left( {{ e}^{ i t \delta }}-{{ e}^{ i t\, \left(-\Delta+ \frac{\delta }{2} \right) }}\right) }{ \left( \Delta + \frac{\delta}{2}\right) }\Bigg).
+\end{equation} this terms is not easily simplified. The term for 
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
