@@ -313,16 +313,33 @@ Performing the integration leads involves only what is inside the parenthesis
 \end{equation} which comprises the states $\superket{1,1}$,$\superket{1,2}$,$\superket{2,1}$,$\superket{2,2}$ and$\superket{3,3}$, leads to and evolution equation for only the $P$ subspace part of the system. This is a vector equation with five non-zero entries which lead to five uncoupled equations for the time evolution of all the $P$ subspace states. The first entry is
 
 \begin{equation}
-    \dot{\rho_P}_1 = -\frac{\ i c_{11} |\Omega_a|^2 \left( 1-{{\ e}^{\ i t\, \left( \Delta+\frac{\delta }{2} \right) }}\right) }{4 \left(\Delta+\frac{\delta }{2} \right) }+\frac{\ i c_{11} |\Omega_a|^2 \left( 1-{{\ e}^{ -i t \left( \Delta+\frac{\delta }{2} \right) }}\right) }{4 \left(\Delta+ \frac{\delta }{2} \right) }.
+    \dot{\rho_{P_{11}}} = -\frac{\ i c_{11} |\Omega_a|^2 ( 1-{{\ e}^{\ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+\frac{\delta }{2} ) }+\frac{\ i c_{11} |\Omega_a|^2 ( 1-{{\ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+ \frac{\delta }{2} ) }.
 \end{equation} This entry corresponds to the state $\superket{1,1}$. As can be readily checked, the constant terms cancel out and this first entry simplifies to
 
 \begin{equation}
-    \dot{\rho_P}_1 = -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}.
+    \dot{\rho_{P_{11}}} = -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}.
 \end{equation} The equation corresponding to the state $\superket{1,2}$ has a slightly different structure
 
 \begin{equation}
-   \dot{\rho_P}_2 =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 \left( {{ e}^{ i t \delta }}-{{ e}^{ i t\, \left( \Delta+\frac{\delta }{2} \right) }}\right) }{ \left( -\Delta + \frac{\delta}{2}  \right)  }+\frac{|\Omega_a|^2\left( {{ e}^{ i t \delta }}-{{ e}^{ i t\, \left(-\Delta+ \frac{\delta }{2} \right) }}\right) }{ \left( \Delta + \frac{\delta}{2}\right) }\Bigg).
-\end{equation} this terms is not easily simplified. The term for 
+   \dot{\rho_{P_{12}}} =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg).
+\end{equation} this terms is not easily simplified. The equations that model the evolution of the $\superket{2,1}$ and $\superket{2,2}$ are completely analogous. The equation that describes the evolution of $\superket{3,3}$ has the structure
+
+\begin{align}
+    \dot{\rho_{P_{33}}} = -\frac{ic_{33}}{4}\Bigg(&\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}+\Delta ) }+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}-\Delta ) }\\
+    &+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, ( \Delta -\frac{\delta }{2}) }}) }{4 ( \Delta -\frac{\delta }{2}) }+\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (-\Delta -\frac{\delta }{2} ) }}) }{4 ( -\frac{\delta }{2}-\Delta ) }\Bigg).\nonumber
+\end{align} Here all the constant terms also cancel out, leading to a simplified term
+
+\begin{equation}
+     \dot{\rho_{P_{33}}} = \frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg).
+\end{equation} With this, the full set of equations is
+
+\begin{align}
+\dot{\rho_P} =& -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{1,1}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{1,2}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{2,1}\nonumber\\
+&-\frac{c_{22}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{2,2}\nonumber\\
+&+\frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{3,3}.\nonumber
+\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace.
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
@@ -385,8 +402,8 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 \end{align} The states are given by
 
 \begin{align}
-  \hat{\rho}_n^k=& a^{\dagger k} \frac{(-1)^{n}}{(1+n_p)^{k+1}}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right):  \quad k \geq 0 \nonumber\\
-    \hat{\rho}_n^k=& \frac{(-1)^{n}}{(1+n_p)^{|k|+1}}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp \left(-\frac{a^{\dagger} a}{1+n_p}\right): a^{|k|}  \quad k \leq 0 . \nonumber
+  \hat{\rho}_n^k=& a^{\dagger k} \frac{(-1)^{n}}{(1+n_p)^{k+1}}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp (-\frac{a^{\dagger} a}{1+n_p}):  \quad k \geq 0 \nonumber\\
+    \hat{\rho}_n^k=& \frac{(-1)^{n}}{(1+n_p)^{|k|+1}}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp (-\frac{a^{\dagger} a}{1+n_p}): a^{|k|}  \quad k \leq 0 . \nonumber
 \end{align} Here the $L_n^k$ are the associated Laguerre polynomials. $k$ and $n$ fulfill
 
 \begin{align}
@@ -399,19 +416,19 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 \end{equation} It's worth noting that the eigenvalues are always non-positive, as these types of states decay over time. The dual states are similar and given by
 
 \begin{align}
-    \check{\rho}_n^k=&\left(\frac{-n_p}{1+n_p}\right)^{n} \frac{n !}{(n+k) !}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{n_p}\right]: a^{k} \quad  k \geq 0, \nonumber \\
-   \check{\rho}_n^k=&\left(\frac{-n_p}{1+n_p}\right)^{n} \frac{n !}{(n+|k|) !} a^{\dagger|k|}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{n_p}\right]: \quad k \leq 0, \nonumber
+    \check{\rho}_n^k=&(\frac{-n_p}{1+n_p})^{n} \frac{n !}{(n+k) !}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{n_p}\right]: a^{k} \quad  k \geq 0, \nonumber \\
+   \check{\rho}_n^k=&(\frac{-n_p}{1+n_p})^{n} \frac{n !}{(n+|k|) !} a^{\dagger|k|}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{n_p}\right]: \quad k \leq 0, \nonumber
 \end{align} with the eigenvalues being the same as for the regular states. It's worth noting that the parameter $n_p$ appears in the eigenstates but not the eigenvalues. In the particular case where the cavity can be considered to be in contact with a bath at zero temperature, the states are given by far simpler expressions
 
 \begin{align}
-    \hat{\rho}_n^k=&\nonumber a^{\dagger k}(-1)^{a^{\dagger} a+n}\left(\begin{array}{c}
+    \hat{\rho}_n^k=&\nonumber a^{\dagger k}(-1)^{a^{\dagger} a+n}(\begin{array}{c}
 n+k \\
 a^{\dagger} a+k
-\end{array}\right) \quad k \geq 0, \\
-\hat{\rho}_n^k=& \nonumber (-1)^{a^{\dagger} a+n}\left(\begin{array}{c}
+\end{array}) \quad k \geq 0, \\
+\hat{\rho}_n^k=& \nonumber (-1)^{a^{\dagger} a+n}(\begin{array}{c}
 n+|k| \\
 a^{\dagger} a+|k|
-\end{array}\right) a^{|k|} \quad k \leq 0,
+\end{array}) a^{|k|} \quad k \leq 0,
 \end{align} for the regular states and 
 
 \begin{align}
@@ -419,10 +436,10 @@ a^{\dagger} a+|k|
 a^{\dagger} a \\
 n
 \end{array}\right] a^{k}=a^{\dagger n} a^{n+k} /(n+k) ! \quad k \geq 0,\\
-\check{\rho}_n^k =&\nonumber a^{\dagger|k|}\left(\begin{array}{c}
+\check{\rho}_n^k =&\nonumber a^{\dagger|k|}(\begin{array}{c}
 a^{\dagger} a \\
 n
-\end{array}\right) \frac{n !}{(n+|k|) !}=a^{\dagger n+|k|} a^{n} /(n+|k|) ! \quad k \leq 0,
+\end{array}) \frac{n !}{(n+|k|) !}=a^{\dagger n+|k|} a^{n} /(n+|k|) ! \quad k \leq 0,
 \end{align} for the dual states. With the particular forms of these eigenstates, we now proceed to obtain a projected master equation for optomechanical cooling.
 
 
