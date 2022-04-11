@@ -339,7 +339,18 @@ Performing the integration leads involves only what is inside the parenthesis
 &+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{2,1}\nonumber\\
 &-\frac{c_{22}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{2,2}\nonumber\\
 &+\frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{3,3}.\nonumber
-\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace.
+\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace. Since the state $\superket{3,3}$ is completely decoupled, the equation is dropped, leaving only the desires set of equations
+
+\begin{align}
+    \dot{\rho_P} =& -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{1,1}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{1,2}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{2,1}\nonumber\\
+&-\frac{c_{22}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{2,2}.\nonumber
+\end{align} For this particular problem, the initial condition can be chosen so as to not involve $\superket{3,3}$ at all and the only requirement is that $|c_{11}|^2+|c_{12}|^2+|c_{21}|^2+|c_{22}|^2=1$ for the purposes of normalization. An analytical solution can be computed for each equation. For example, the solution for the state $\superket{1,1}$ is
+
+\begin{equation}
+    \rho_{11} = \frac{c_{11}\Big(|\Omega_a|^2(e^{it(\Delta+\frac{\delta}{2})}+e^{-it(\frac{\delta}{2})})+4(\Delta+\frac{\delta}{2})^2-2)\Big)}{4(\Delta + \frac{\delta}{2})^2}.
+\end{equation}
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
