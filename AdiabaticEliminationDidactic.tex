@@ -359,15 +359,15 @@ Arguably the simplest and perhaps most physically intuitive implementation of an
 
 \begin{equation}\label{eq:basic_hamiltonian}
     H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x,
-\end{equation}  is used. Here, $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. The parameter $g_0$ is the vacuum optomechanical coupling strength, indicating the strength of the interaction between one photon and one phonon, and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
+\end{equation}  is used. Here, the $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. These are both common approximations.  The parameter $g_0$ is the vacuum optomechanical coupling strength, indicating the strength of the interaction between one photon and one phonon, and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
 
 \begin{equation}\label{eq:Optomechanic_hamiltonian}
     H_{opt}=-\hbar \delta a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x + \Omega(a^\dagger+a),
-\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, for example photon leakage due to the semi-transparent end mirrors, which requires additional considerations.
+\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, for example from photon leakage due to the semi-transparent end mirrors, which requires additional considerations.
 
 \subsection{Optomechanical master equation}
 
-Dissipation can be modeled through the use of a master equation \cite{CarmichaelQuantumOptics1999}. A master equation models the interaction between a system of interest, often referred to as the central system, and a larger system often referred to as a reservoir, which represents the environment. In this manner, dissipation is modeled as an energy exchange between the system of interest and the reservoir. Both systems, when combined, form a closed system. During the derivation, the reservoir degrees of freedom are traced out and the result is an equation that only models the evolution of the central system but which accounts for the energy it exchanges with its environment. In the case of the basic optomechanical system introduced above, the master equation is
+Dissipation can be modeled through the use of a master equation \cite{CarmichaelQuantumOptics1999}. A master equation models the interaction between a system of interest, often referred to as the central system, and a larger system often referred to as a reservoir or bath, which represents the environment. Dissipation is thus modeled as an energy exchange between the system of interest and the reservoir. Both systems, when combined, form a closed system. During the derivation, the reservoir degrees of freedom are traced out and the result is an equation that only models the evolution of the central system but which accounts for the energy it exchanges with its environment. In the case of the basic optomechanical system introduced above, the master equation is
 
 \begin{equation} \label{eq:OptoMechanicalMasterEquation}
 \dot{\rho} = \frac{1}{i\hbar}[H,\rho] +L_a\rho + L_b \rho.
@@ -381,15 +381,15 @@ L_a \rho =& - \frac{\kappa}{2}(n_p + 1)[a^\dagger a\rho + \rho a^\dagger a -2a\r
 \begin{align}
 L_b \rho =& - \frac{\gamma}{2}(n_m + 1)[b^\dagger b\rho + \rho b^\dagger b -2b\rho b^\dagger]  \\
  &- \frac{\gamma}{2}(n_m)[ bb^\dagger\rho + \rho  bb^\dagger -2b^\dagger\rho b]\, .\nonumber
-\end{align} $\mathrm{L}_a$ models the dissipation of the electromagnetic field within the cavity and $\mathrm{L}_b$ models the dissipation of the mechanic excitations in the mechanical resonator, there are two dissipation terms as the system is coupled to two different reservoirs, a photonic reservoir and a phononic reservoir. $\kappa$ and $\gamma$ are the respective dissipation coefficients. $n_p$ and $n_m$ are the thermal occupation numbers for the photon reservoir and the mechanical reservoir at the respective resonant frequencies of the modes being considered. In order to find a master equation that models optomechanical cooling it is often necessary to find a convenient eigenbasis for these kinds of super operators, as the $\mathrm{L}$ terms are known. The basis employed here is known as the damping basis and will now be introduced in detail. 
+\end{align} $\mathrm{L}_a$ models the dissipation of the electromagnetic field within the cavity and $\mathrm{L}_b$ models the dissipation of the mechanical excitations in the mechanical resonator. There are two dissipation terms as the system is coupled to two different reservoirs, a photonic reservoir and a phononic reservoir. $\kappa$ and $\gamma$ are the respective dissipation coefficients. $n_p$ and $n_m$ are the thermal occupation numbers for the photon reservoir and the mechanical reservoir at the respective resonant frequencies of the modes being considered. In order to find a master equation that models optomechanical cooling it is often necessary to find a convenient eigen-basis for these kinds of super operators, as the $\mathrm{L}$ terms are known. The basis employed here is known as the damping basis and is introduced in detail. 
 
 \section{The damping basis}
 
-When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is often desirable to be able to write the density operator in a convenient manner.  In the presence of dissipation however, the problem is not necessarily straightforward. Here the use of a basis particularly suited for these types of problems, known as the damping basis \cite{BriegelDampingBasis1993}, is illustrated. For the purpose of this exercise, the discussion is limited to the case of a cavity with photon dissipation, modeled by
+When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is often desirable to be able to write the density operator in a convenient manner.  In the presence of dissipation however, the problem is not necessarily straightforward. The use of a basis particularly suited for these types of problems, known as the damping basis \cite{BriegelDampingBasis1993}, is illustrated. For the purpose of illustrating this basis, the discussion is limited to the case of a cavity with photon dissipation, modeled by
 
 \begin{equation}\label{eq:DampingBasisMasterEquation}
     \dot{\rho} = \frac{1}{i\hbar}[\hbar \omega a^\dagger a,\rho] +\mathrm{L}_a\rho = \mathcal{L}\rho.
-\end{equation} $\mathcal{L}$ is the complete Liouville super operator which includes both $H$ and $\mathrm{L}$. $\mathcal{L}$ and $\mathrm{L}$ act on the density operator $\rho$ which itself acts on Hilbert space vectors, so sometimes $\mathcal{L}$ and $\mathrm{L}$ are referred to as super operators. If it is assumed that \ref{eq:DampingBasisMasterEquation} has been solved and all of the eigenvalues are known, then it would be possible to write the density operator's initial state as an expansion
+\end{equation} $\mathcal{L}$ is the complete Liouville super operator which includes both $H$ and $\mathrm{L}$. $\mathcal{L}$ and $\mathrm{L}$ act on the density operator $\rho$ which itself acts on Hilbert space vectors. If it is assumed that \ref{eq:DampingBasisMasterEquation} has been solved and all of the eigenvalues are known, then it would be possible to write the density operator's initial state as an expansion
 
 \begin{equation}
     \rho(0) = \sum_{\lambda} \check{c}_{\lambda} \hat{\rho}_{\lambda}, 
@@ -415,7 +415,7 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 \begin{align}
   \hat{\rho}_n^k=& a^{\dagger k} \frac{(-1)^{n}}{(1+n_p)^{k+1}}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp (-\frac{a^{\dagger} a}{1+n_p}):  \quad k \geq 0 \nonumber\\
     \hat{\rho}_n^k=& \frac{(-1)^{n}}{(1+n_p)^{|k|+1}}: L_{n}^{(|k|)}\left[\frac{a^{\dagger} a}{1+n_p}\right] \exp (-\frac{a^{\dagger} a}{1+n_p}): a^{|k|}  \quad k \leq 0 . \nonumber
-\end{align} Here the $L_n^k$ are the associated Laguerre polynomials. $k$ and $n$ fulfill
+\end{align} Here the $L_n^k$ are the associated Laguerre polynomials. The values $k$ and $n$ fulfill
 
 \begin{align}
     n=&0,1,2,\dots \\
@@ -424,7 +424,7 @@ When working with equations such as \ref{eq:OptoMechanicalMasterEquation}, it is
 
 \begin{equation}
     \lambda_n^k=-\kappa (n+\frac{\abs{k}}{2}).
-\end{equation} It's worth noting that the eigenvalues are always non-positive, as these types of states decay over time. The dual states are similar and given by
+\end{equation} It's worth noting that the real part of these eigenvalues is always non-positive, as these types of states decay over time. The dual states are similar and given by
 
 \begin{align}
     \check{\rho}_n^k=&(\frac{-n_p}{1+n_p})^{n} \frac{n !}{(n+k) !}: L_{n}^{(k)}\left[\frac{a^{\dagger} a}{n_p}\right]: a^{k} \quad  k \geq 0, \nonumber \\
@@ -451,12 +451,12 @@ n
 a^{\dagger} a \\
 n
 \end{array}) \frac{n !}{(n+|k|) !}=a^{\dagger n+|k|} a^{n} /(n+|k|) ! \quad k \leq 0,
-\end{align} for the dual states. With the particular forms of these eigenstates, we now proceed to obtain a projected master equation for optomechanical cooling.
+\end{align} for the dual states. With the particular forms of these eigenstates, it is now more straightforward to proceed towards projected master equation for optomechanical cooling.
 
 
 \section{Projection of the master equation}
 
-Reiterating the core idea of the method, it is to project the master equation into two different eigenvalue sub-spaces with no overlap between them. One subspace is relevant to the problem we wish to solve and the other one is not. In this particular case, in order to model a cooling process the aim is to split the eigenvalue space into a sub-space corresponding only to states that do not decay quickly in time and one space with states that do, such that at the end of the cooling process there will be only non-decaying states represented. Physically this is justifiable by considering different time scales. In the system considered in section \ref{sec:ExampleSystem}, three different time scales can be considered. This can be illustrated with some experimental parameters.
+The core idea of the method, is to project the master equation into two different eigenvalue sub-spaces with no overlap between them. One subspace is relevant to the problem to be solved and the other one is not. In this particular case, in order to model a cooling process the aim is to split the eigenvalue space into a sub-space corresponding only to states that do not decay quickly in time and a sub-space with states that do, such that at the end of the cooling process there will be only non-decaying states represented. Physically this is justifiable by considering different time scales. In the system considered in section \ref{sec:ExampleSystem}, three different time scales can be considered. This can be illustrated with some experimental parameters.
 
 \begin{table}[]
     \centering
@@ -473,7 +473,7 @@ Reiterating the core idea of the method, it is to project the master equation in
     \label{tab:my_label}
 \end{table}
 
-The projection procedure is generally the same as in the case of the 3 level atom \ref{sect:ThreeLevelAtom}. The projection super operators have the same properties, but now encompass different eigenvalue subspaces. The projection super operators are not expressed in super-ket notation in this instance as the eigenvalue spaces are not finite so it is not feasible to employ explicit matrix multiplication. The super operators are written as in \cite{YanesOptomechanicalCooling2020}
+The projection procedure is generally the same as in the case of the 3 level atom \ref{sect:ThreeLevelAtom}. The projection super operators have the same properties, but now encompass different eigenvalue sub-spaces. The projection super operators are not expressed in super-ket notation in this instance as the eigenvalue spaces are not finite so it is not feasible to employ explicit matrix multiplication. The super operators are written as in \cite{YanesOptomechanicalCooling2020}
 
 \begin{eqnarray}
   P &=& \sum_{\lambda} (\hat{\rho}_{\lambda}^{cav}\otimes\hat{\rho}_{\lambda}^{mec})\otimes(\check{\rho}_{\lambda}^{cav}\otimes\check{\rho}_{\lambda}^{mec}),\label{eq:projector_p}\\
