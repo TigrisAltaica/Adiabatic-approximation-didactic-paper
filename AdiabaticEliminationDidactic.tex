@@ -58,19 +58,19 @@ It is important to explain the mathematical spaces that will be involved in the 
 
 \begin{equation}
 \begin{pmatrix}
-A_{11} & A_{12} \\
-A_{21} & A_{22}
+A_{aa} & A_{ab} \\
+A_{ba} & A_{bb}
 \end{pmatrix}
 \otimes
 \begin{pmatrix}
-A_{11} & A_{12} \\
-A_{21} & A_{22}
+A_{aa} & A_{ab} \\
+A_{ba} & A_{bb}
 \end{pmatrix} =
 \begin{pmatrix}
-A_{11} B_{11} & A_{11} B{12} & A_{12} B_{11} & A_{12} B_{12} \\
-A_{11} B_{21} & A_{11} B{22} & A_{12} B_{21} & A_{12} B_{22} \\
-A_{21} B_{11} & A_{21} B{12} & A_{22} B_{11} & A_{22} B_{12} \\
-A_{21} B_{21} & A_{21} B{22} & A_{22} B_{21} & A_{22} B_{22}
+A_{aa} B_{aa} & A_{aa} B{12} & A_{ab} B_{aa} & A_{ab} B_{ab} \\
+A_{aa} B_{ba} & A_{aa} B{22} & A_{ab} B_{ba} & A_{ab} B_{bb} \\
+A_{ba} B_{aa} & A_{ba} B{12} & A_{bb} B_{aa} & A_{bb} B_{ab} \\
+A_{ba} B_{ba} & A_{ba} B{22} & A_{bb} B_{ba} & A_{bb} B_{bb}
 \end{pmatrix}.
 \end{equation}
 In this way, density operators can be treated as vectors. Note the rules of the Kroenecker product mean that dimension is retained. In the case of the density operator for a system such as the three level atom, for example, a $3x3$ matrix becomes a $9x1$ vector. All the aforementioned spaces have adjoint or dual spaces associated with them. In the case of $\mathcal{L}_d$, the associated dual space is labeled as $\mathcal{L}^*_d$. This dual space is completely analogous to the dual space defined for $\mathcal{H}_d$, denoted $\mathcal{H}^*_d$. Just as kets are elements of $\mathcal{H}_d$ and bras are elements of  $\mathcal{H}^*_d$, superkets are elements of $\mathcal{L}_d$ and superbras are elements of $\mathcal{L}^*_d$. With these two spaces, it's possible to define an inner product on $\mathcal{L}_d$
@@ -97,7 +97,7 @@ The identity is simply
 
 \section{Three level atom}\label{sect:ThreeLevelAtom}
 
-The first example consists of a three level atom in the $\Lambda$ configuration, such as the one in \cite{Ying3LevelAtom1996}. This system consists of an atom where only 3 different energy levels are considered. Two of these levels, labeled $a$ and $b$, are close to each other and the third level, labeled $e$, is farther way from the other two. The atom interacts with two separate lasers, one with frequency $\omega_a$ which couples the $a$ and $e$ levels with detuning $\lambda_a$ and one with frequency $\omega_b$ which couples the $b$ and $e$ levels with detuning $\delta_b$. There is no direct coupling between the $a$ and $b$ levels. In the case where the $e$ level is highly detuned, the objective is to eliminate it adiabatically, following a procedure similar to the one found in \cite{BrionAdiabatic2006}, but without the use of Green's functions. Following that paper's notation,  the system's Hamiltonian in the rotating wave approximation is
+The first example consists of a three level atom in the $\Lambda$ configuration, such as the one in \cite{Ying3LevelAtom1996}. This system consists of an atom where only 3 different energy levels are considered. Two of these levels, labeled $a$ and $b$, are close to each other and the third level, labeled $e$, is further way from the other two. The atom interacts with two separate lasers, one with frequency $\omega_a$ which couples the $a$ and $e$ levels with detuning $\lambda_a$ and one with frequency $\omega_b$ which couples the $b$ and $e$ levels with detuning $\delta_b$. There is no direct coupling between the $a$ and $b$ levels. In the case where the $e$ level is highly detuned, the objective is to eliminate it adiabatically, following a procedure similar to the one found in \cite{BrionAdiabatic2006}, but without the use of Green's functions. Following that paper's notation,  the system's Hamiltonian in the rotating wave approximation is
 
 \begin{equation}\label{eq:Lambda_Hamiltonian}
     \widehat{H}=\hbar\left[\begin{array}{ccc}
@@ -310,47 +310,48 @@ Performing the integration leads involves only what is inside the parenthesis
 
 \begin{equation}
     \rho(0)_P = \sum_{\lambda_p} c_{\lambda_p} \rho_{\lambda_p},
-\end{equation} which comprises the states $\superket{1,1}$,$\superket{1,2}$,$\superket{2,1}$,$\superket{2,2}$ and$\superket{3,3}$, leads to and evolution equation for only the $P$ subspace part of the system. This is a vector equation with five non-zero entries which lead to five uncoupled equations for the time evolution of all the $P$ subspace states. The first entry is
+\end{equation} which comprises the states $\superket{a,a}$,$\superket{a,b}$,$\superket{b,a}$,$\superket{b,b}$ and$\superket{e,e}$, leads to and evolution equation for only the $P$ subspace part of the system. This is a vector equation with five non-zero entries which lead to five uncoupled equations for the time evolution of all the $P$ subspace states. The first entry is
 
 \begin{equation}
-    \dot{\rho_{P_{11}}} = -\frac{\ i c_{11} |\Omega_a|^2 ( 1-{{\ e}^{\ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+\frac{\delta }{2} ) }+\frac{\ i c_{11} |\Omega_a|^2 ( 1-{{\ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+ \frac{\delta }{2} ) }.
-\end{equation} This entry corresponds to the state $\superket{1,1}$. As can be readily checked, the constant terms cancel out and this first entry simplifies to
+    \dot{\rho_{P_{aa}}} = (-\frac{\ i c_{aa} |\Omega_a|^2 ( 1-{{\ e}^{\ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+\frac{\delta }{2} ) }+\frac{\ i c_{aa} |\Omega_a|^2 ( 1-{{\ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+ \frac{\delta }{2} ) })\superket{a,a}.
+\end{equation} This entry corresponds to the state $\superket{a,a}$. As can be readily checked, the constant terms cancel out and this first entry simplifies to
 
 \begin{equation}
-    \dot{\rho_{P_{11}}} = -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}.
-\end{equation} The equation corresponding to the state $\superket{1,2}$ has a slightly different structure
+    \dot{\rho_{P_{aa}}} = -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}.
+\end{equation} The equation corresponding to the state $\superket{a,b}$ has a slightly different structure
 
 \begin{equation}
-   \dot{\rho_{P_{12}}} =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg).
-\end{equation} this terms is not easily simplified. The equations that model the evolution of the $\superket{2,1}$ and $\superket{2,2}$ are completely analogous. The equation that describes the evolution of $\superket{3,3}$ has the structure
+   \dot{\rho_{P_{ab}}} =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}.
+\end{equation} this terms is not easily simplified. The equations that model the evolution of the $\superket{b,a}$ and $\superket{b,b}$ are completely analogous. The equation that describes the evolution of $\superket{e,e}$ has the structure
 
 \begin{align}
     \dot{\rho_{P_{33}}} = -\frac{ic_{33}}{4}\Bigg(&\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}+\Delta ) }+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}-\Delta ) }\\
-    &+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, ( \Delta -\frac{\delta }{2}) }}) }{4 ( \Delta -\frac{\delta }{2}) }+\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (-\Delta -\frac{\delta }{2} ) }}) }{4 ( -\frac{\delta }{2}-\Delta ) }\Bigg).\nonumber
+    &+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, ( \Delta -\frac{\delta }{2}) }}) }{4 ( \Delta -\frac{\delta }{2}) }+\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (-\Delta -\frac{\delta }{2} ) }}) }{4 ( -\frac{\delta }{2}-\Delta ) }\Bigg)\superket{e,e}.\nonumber
 \end{align} Here all the constant terms also cancel out, leading to a simplified term
 
 \begin{equation}
-     \dot{\rho_{P_{33}}} = \frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg).
+     \dot{\rho_{P_{33}}} = \frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{e,e}.
 \end{equation} With this, the full set of equations is
 
 \begin{align}
-\dot{\rho_P} =& -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{1,1}\\
-&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{1,2}\nonumber\\
-&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{2,1}\nonumber\\
-&-\frac{c_{22}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{2,2}\nonumber\\
-&+\frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{3,3}.\nonumber
-\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace. Since the state $\superket{3,3}$ is completely decoupled, the equation is dropped, leaving only the desires set of equations
+\dot{\rho_P} =& -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{b,a}\nonumber\\
+&-\frac{c_{bb}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{b,b}\nonumber\\
+&+\frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{e,e}.\nonumber
+\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace. Since the state $\superket{e,e}$ is completely decoupled, the equation is dropped, leaving only the desires set of equations
 
 \begin{align}
-    \dot{\rho_P} =& -\frac{c_{11}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{1,1}\\
-&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{1,2}\nonumber\\
-&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{2,1}\nonumber\\
-&-\frac{c_{22}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{2,2}.\nonumber
-\end{align} For this particular problem, the initial condition can be chosen so as to not involve $\superket{3,3}$ at all and the only requirement is that $|c_{11}|^2+|c_{12}|^2+|c_{21}|^2+|c_{22}|^2=1$ for the purposes of normalization. An analytical solution can be computed for each equation. For example, the solution for the state $\superket{1,1}$ is
+    \dot{\rho_P} =& -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{b,a}\nonumber\\
+&-\frac{c_{bb}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{b,b}.\nonumber
+\end{align} For this particular problem, the initial condition can be chosen so as to not involve $\superket{e,e}$ at all and the only requirement is that $|c_{aa}|^2+|c_{ab}|^2+|c_{ba}|^2+|c_{bb}|^2=1$ for the purposes of normalization. An analytical solution can be computed for each equation. For example, the solutions for the states $\superket{a,a}$ and $\superket{b,b}$ are
 
-\begin{equation}
-    \rho_{11} = \frac{c_{11}\Big(|\Omega_a|^2(e^{it(\Delta+\frac{\delta}{2})}+e^{-it(\frac{\delta}{2})})+4(\Delta+\frac{\delta}{2})^2-2)\Big)}{4(\Delta + \frac{\delta}{2})^2}.
-\end{equation}
+\begin{align}
+    \rho_{aa} =& c_{aa}\frac{2 |\Omega_a|^2 \cos{t(\Delta+\frac{\delta}{2}) }+4(\Delta+\frac{\delta}{2})^2 -2  |\Omega_a|^2}{4(\Delta+\frac{\delta}{2})}\superket{a,a},\\
+    \rho_{bb} =& c_{bb}\frac{2  |\Omega_b|^2 \cos{t(\Delta-\frac{\delta}{2}) }+4(\Delta-\frac{\delta}{2})^2 -2  |\Omega_b|^2 }{4(\Delta-\frac{\delta}{2})}\superket{b,b}.
+\end{align}
 
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
