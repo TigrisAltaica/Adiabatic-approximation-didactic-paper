@@ -359,12 +359,24 @@ Performing the integration leads involves only what is inside the parenthesis
 Arguably the simplest and perhaps most physically intuitive implementation of an optomechanical system is a Fabry-Perot cavity with a movable end mirror. These types of systems, comprised by an optical cavity composed of two parallel, semi-transparent mirrors with one of the mirrors being suspended or otherwise able to move under the constraint of a harmonic potential, date back to experiments in gravitational interferometry \cite{AbramoviciLIGO1992}. For the purposes of this exercise,  the standard optomechanical Hamiltonian detailed in \cite{LawMovingMirror1995}
 
 \begin{equation}\label{eq:basic_hamiltonian}
-    H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x,
-\end{equation}  is used. Here, the $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. These are both common approximations.  The parameter $g_0$ is the vacuum optomechanical coupling strength, indicating the strength of the interaction between one photon and one phonon, and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
+    H=\hbar \omega a^\dagger a + \hbar\nu b^\dagger b - G a^\dagger a x+ \Omega(a^\dagger+a),
+\end{equation}  is used. Here, the $a$ and $a^\dagger$ operators correspond to the cavity field which is assumed to have only one mode with frequency $\omega$ while the $b$ and $b^\dagger$ operators correspond to the mechanical oscillator which is also assumed to have only one mode with frequency $\nu$. These are both common approximations.  The parameter $G$ models the optomechanical coupling strength, indicating the strength of the interaction between one photon and one phonon, and $x$ is the mechanical oscillator's displacement from equilibrium.  Usually optomechanical coupling can be considered weak enough that a laser pump with power given by $\Omega$ is employed to boost coupling. The usual Hamiltonian employed in the literature incorporates this driving laser in a frame that rotates with the driving laser's frequency, resulting in
 
 \begin{equation}\label{eq:Optomechanic_hamiltonian}
-    H_{opt}=-\hbar \delta a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a x + \Omega(a^\dagger+a),
-\end{equation} with $\delta = \omega_L-\omega$. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. However, optomechanical systems often include dissipation, for example from photon leakage due to the semi-transparent end mirrors, which requires additional considerations.
+    H_{opt}=-\hbar \delta a^\dagger a + \hbar\nu b^\dagger b - g_0 a^\dagger a (b+b^\dagger) ,
+\end{equation} with $\delta = \omega_L-\omega$. $g_0 = G x_{ZPF}$ is the vacuum optomechanical coupling strength and does not depend on the definition of the displacement so it is considered more fundamental \cite{AspelmeyerOptomechanics2014}. The Hamiltonian \eqref{eq:Optomechanic_hamiltonian} models the evolution of the cavity when there is no dissipation. Often in the literature, it is justifiable and convenient to work with a linearized version of the Hamiltonian where the operators $a$ and $a\dagger$ are replaced by the fluctuations about a coherent mean cavity field $\alpha$, that is
+
+\begin{equation}
+    a = \alpha + \delta a,
+\end{equation} and
+
+\begin{equation}
+    a^\dagger = \alpha^* + \delta a^\dagger.
+\end{equation} This leads to an approximate interaction Hamiltonian given by
+
+\begin{equation}
+    H_{int} = -\hbar g_0 (\alpha^* \delta a + \alpha \delta a^\dagger)(b+b^\dagger).
+\end{equation} where it has been assumed that $|\alpha|^2$ is large. for simplicity, it is assumed from now on that $\alpha \approx \sqrt{n_{cav}}$ where $n_{cav}$ is the average number of photons in the cavity and is thus real valued. For more on this approximation see \cite{AspelmeyerOptomechanics2014}. However, optomechanical systems often include dissipation, for example from photon leakage due to the semi-transparent end mirrors, which requires additional considerations to the Hamiltonian formulation.
 
 \subsection{Optomechanical master equation}
 
@@ -457,7 +469,7 @@ n
 
 \section{Projection of the master equation}
 
-The core idea of the method, is to project the master equation into two different eigenvalue sub-spaces with no overlap between them. One subspace is relevant to the problem to be solved and the other one is not. In this particular case, in order to model a cooling process the aim is to split the eigenvalue space into a sub-space corresponding only to states that do not decay quickly in time and a sub-space with states that do, such that at the end of the cooling process there will be only non-decaying states represented. Physically this is justifiable by considering different time scales. In the system considered in section \ref{sec:ExampleSystem}, three different time scales can be considered. This can be illustrated with some experimental parameters.
+The core idea of the method, is to project the master equation into two different eigenvalue sub-spaces with no overlap between them. One subspace is relevant to the problem to be solved and the other one is not. In this particular case, in order to model a cooling process the aim is to split the eigenvalue space into a sub-space corresponding only to states that do not decay quickly in time and a sub-space with states that do, such that at the end of the cooling process there will be only non-decaying states represented. Physically this is justifiable by considering the different time scales as seen in table \ref{tab:experimental_parameter_table}. In the system considered in section \ref{sec:ExampleSystem}, three different time scales can be considered. This can be illustrated with some experimental parameters.
 
 \begin{table}[]
     \centering
@@ -471,19 +483,211 @@ The core idea of the method, is to project the master equation into two differen
         \hline
     \end{tabular}
     \caption{Caption}
-    \label{tab:my_label}
+    \label{tab:experimental_parameter_table}
 \end{table}
 
-The projection procedure is generally the same as in the case of the 3 level atom \ref{sect:ThreeLevelAtom}. The projection super operators have the same properties, but now encompass different eigenvalue sub-spaces. The projection super operators are not expressed in super-ket notation in this instance as the eigenvalue spaces are not finite so it is not feasible to employ explicit matrix multiplication. The super operators are written as in \cite{YanesOptomechanicalCooling2020}
+The projection procedure is generally the same as in the case of the three level atom in chapter \ref{sect:ThreeLevelAtom}. The projection super operators have the same properties, but now encompass different eigenvalue sub-spaces. The projection super operators are not expressed in super-ket notation in this instance as the eigenvalue spaces are not finite so it is not feasible to employ explicit matrix multiplication. The super operators are written as in \cite{YanesOptomechanicalCooling2020}
 
-\begin{eqnarray}
+\begin{eqnarray}\label{eq:optomechanical_projectors_detailed}
   P &=& \sum_{\lambda} (\hat{\rho}_{\lambda}^{cav}\otimes\hat{\rho}_{\lambda}^{mec})\otimes(\check{\rho}_{\lambda}^{cav}\otimes\check{\rho}_{\lambda}^{mec}),\label{eq:projector_p}\\
   &=& \sum_\lambda \mathcal{P}_\lambda, \nonumber\\
   Q &=& \sum_{\lambda'} (\hat{\rho}_{\lambda'}^{cav}\otimes \hat{\rho}_{\lambda'}^{mec})\otimes(\check{\rho}_{\lambda'}^{cav}\otimes\check{\rho}_{\lambda'}^{mec})\label{eq:projector_q}\, ,\\
-  &=& \sum_\lambda \mathcal{Q}_{\lambda'}, \nonumber
-\end{eqnarray}
+  &=& \sum_\lambda \mathcal{Q}_{\lambda'}. \nonumber
+\end{eqnarray} Here, $\lambda$ denotes the eigenvalues in the $P$ sub-space and $\lambda'$ denotes those in the $Q$ sub-space. As in the case of the three level atom, $P$ contains only slow values and $Q$ contains only fast values. In this case however, the eigenvalues are not completely imaginary, as can be seen in the damping basis section, the eigenvalues for the states that are used in this problem are of the form
 
-\section{Adiabatic approximation}
+\begin{equation}
+    \lambda_n^k=ik\omega-\kappa (n+\frac{\abs{k}}{2}).
+\end{equation} for a system with natural frequency $\omega$. The real part is strictly non-positive and leads to exponential decay, so $P$ is composed of all eigenvalues with no real part, which is those with $n=k=0$. $Q$ contains all other eigenvalues. 
+
+In the optomechanical case, the master equation is different than in the case for the three level atom. Here, equation $\eqref{eq:OptoMechanicalMasterEquation}$ can be separated into three different time scales. The slowest time scale involves the mechanical dissipation an is accounted for after the current procedure. The next fastest time scale corresponds to the optomechanical interaction . The fastest time scale is the free dynamics of the cavity and the mechanical resonator as well as the cavity dissipation. Because of this, the mechanical dissipation is accounted for after the procedure. This leads to separating equation $\eqref{eq:OptoMechanicalMasterEquation}$ as
+
+\begin{equation}
+\dot{\rho}=(\mathrm{L}_0+\mathrm{L}_1)\rho\, ,
+\end{equation}
+where
+\begin{eqnarray}\label{eq:freelindblat}
+\mathrm{L}_0=&\mathrm{L}_{cav} + \mathrm{L}_{mec},\\
+ =&(\frac{1}{i\hbar}[H_{\rm cav},\bullet]+L_a) +(\frac{1}{i\hbar}[H_{\rm mec},\bullet]), \nonumber\\
+ =&(\frac{1}{i\hbar}[\hbar \omega a^\dagger a,\bullet]+L_a) +(\frac{1}{i\hbar}[ \hbar\nu b^\dagger b ,\bullet]) 
+\end{eqnarray} model the free dynamics with cavity dissipation and
+\begin{equation}
+\mathrm{L}_1 = \frac{1}{i\hbar}[H_{int},\bullet],
+\end{equation} models the interaction. With this the next step is to project equation $\eqref{eq:OptoMechanicalMasterEquation}$ into the $P$ and $Q$ sub-spaces. The procedure is completely analogous to the three level atom, until the point of 
+
+\begin{equation}
+    P\dot{\rho}=\sum_{\lambda, \lambda'} \mathcal{P}_{\lambda} \mathrm{L}_1  \mathcal{Q}_{\lambda'}\mathrm{L}_1\mathcal{P}_{\lambda} \rho_0\Bigg(\frac{e^{\lambda\Delta t}-e^{\lambda' \Delta t}}{\lambda-\lambda'}\Bigg),
+\end{equation} where the notation used for the projectors has been changed to the notation detailed in equation \ref{eq:optomechanical_projectors_detailed} as this notations is more practical in the case of an infinite dimensional problem. Here, the adiabatic approximation involves discarding the exponential term containing $\lambda'$ values as these all have a real part that decays exponentially and if $\Delta t >> 1$ that part can be discarded. The $\lambda$ values are all 0 leading to
+
+\begin{equation}\label{eq:Projected_optomechanical_eq_no_trace}
+    P\dot{\rho}=-\sum_{\lambda'} \frac{ P \mathrm{L}_1  \mathcal{Q}_{\lambda'}\mathrm{L}_1P \rho_0}{\lambda'}.
+\end{equation} Remembering that 
+
+\begin{equation}
+\mathrm{L}_1 = -\frac{1}{i\hbar}[g_0\alpha (\delta a +  \delta a^\dagger)  (b+b^\dagger),\bullet],
+\end{equation} models the interaction, $\eqref{eq:Projected_optomechanical_eq_no_trace}$ can be written as
+
+\begin{equation}
+    P\dot{\rho}=\frac{g_0^2\alpha^2}{\hbar^2}\sum_{\lambda'} \frac{ P[ (\delta a +  \delta a^\dagger)  (b+b^\dagger),\mathcal{Q}_{\lambda'}[(\delta a +  \delta a^\dagger) (b+b^\dagger),P \rho_0]]}{\lambda'}.
+\end{equation} In order to make the notation more compact, the substitution
+
+\begin{align}
+    F_a =& (\delta a + \delta a^\dagger),\\
+    F_b =& (b + b^\dagger),\\
+    F =& F_a F_b,
+\end{align} is employed. In this notation
+
+\begin{equation}\label{eq:ProjectedEquationFNotation}
+    P\dot{\rho}=\frac{g_0^2\alpha^2}{\hbar^2}\sum_{\lambda'} \frac{ P[ F,\mathcal{Q}_{\lambda'}[F,P \rho_0]]}{\lambda'}.
+\end{equation}  Writing out the commutators explicitly leads to four terms. Special care must be taken to ensure that the projection super operators are applied to the correct operators. From right to left in equation \eqref{eq:ProjectedEquationFNotation} the first $P$ operator applies only to $\rho_0$,  $Q_{\lambda'}$ applies to $[F,P \rho_0]$ and the final $P$ operator apples to the entire expression. With this in mind, equation \eqref{eq:ProjectedEquationFNotation} can be written as
+
+\begin{align}
+    P\dot{\rho} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& P\{FQ_{\lambda'}\{FP\rho_0\}\}-P\{Q_{\lambda'}\{FP\rho_0\}F\}\\
+    &-P\{FQ_{\lambda'}\{P\rho_0F \} \} +P\{Q_{\lambda'}\{P\rho_0 F\}F\} \Bigg). \nonumber
+\end{align} The curly brackets denote what the projector to the left applies to. The aim of this procedure is to obtain an equation for the cooling of the mechanical degrees of freedom. The next step is to trace over the unwanted cavity degrees of freedom
+
+\begin{align}
+   Tr_c[P\dot{\rho}] = Tr_c[(\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& P\{FQ_{\lambda'}\{FP\rho_0\}\}-P\{Q_{\lambda'}\{FP\rho_0\}F\}\\
+    &-P\{FQ_{\lambda'}\{P\rho_0F \} \} +P\{Q_{\lambda'}\{P\rho_0 F\}F\} \Bigg)].\nonumber
+\end{align}  Using the notation $\mu = Tr_c[P\rho]$ and employing the linear properties of the trace leads to
+
+\begin{align}\label{eq:ProjectedEquationTrace}
+   Tr_c[P\dot{\rho}] = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& Tr_c[P\{FQ_{\lambda'}\{FP\rho_0\}\}]-Tr_c[P\{Q_{\lambda'}\{FP\rho_0\}F\}]\nonumber\\
+    &-Tr_c[P\{FQ_{\lambda'}\{P\rho_0F \} \}] +Tr_c[P\{Q_{\lambda'}\{P\rho_0F \}F\}] \Bigg).
+\end{align} Here it becomes necessary to consider what elements must remain in the trace and which do not. Remembering that the projector $Q_{\lambda'}$ has the form
+
+\begin{equation}
+    Q_{\lambda'} =  (\hat{\rho}_{\lambda'}^{cav}\otimes \hat{\rho}_{\lambda'}^{mec})\otimes(\check{\rho}_{\lambda'}^{cav}\otimes\check{\rho}_{\lambda'}^{mec}),
+\end{equation} it can be written as
+
+\begin{equation}
+    Q_{\lambda'} = Q_{\lambda'}^{cav}\otimes Q_{\lambda'}^{mec}.
+\end{equation} and that $F$ can be written as
+
+\begin{equation}
+    F = F_a F_b,
+\end{equation} it is possible to re-write the terms in equation \eqref{eq:ProjectedEquationTrace} as
+
+\begin{align*}
+    \dot{\mu} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& Tr_c[P\{F_a F_bQ_{\lambda'}\{F_a F_bP\rho_0\}\}]\\
+    &-Tr_c[P\{Q_{\lambda'}\{F_a F_bP\rho_0\}F_a F_b\}]\\
+    &-Tr_c[P\{F_a F_bQ_{\lambda'}\{P\rho_0F_a F_b \} \}]\\ &+Tr_c[P\{Q_{\lambda'}\{P\rho_0 F_a F_b\}F_a F_b\}] \Bigg).
+\end{align*} Where the notation $\mu=Tr_c[P\rho]$ has been used. $\mu$ represents only the mechanical degrees of freedom in the $P$ space and is what is being modeled. It is also necessary to rewrite the projectors to separate the mechanical and cavity parts. The $\otimes$ symbol is omitted for brevity and the initial condition is also likewise separated (this assumes the mechanical resonator and cavity field are not initially correlated which is reasonable). This leads to
+
+\begin{align*}
+    \dot{\mu} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& Tr_c[P_mP_c\{F_a F_bQ^m_{\lambda'}Q^c_{\lambda'}\{F_a F_bP_mP_c\rho_0^m\rho_0^c\}\}]\\
+    &-Tr_c[P_mP_c\{Q^m_{\lambda'}Q^c_{\lambda'}\{F_a F_bP_mP_c\rho_0^m\rho_0^c\}F_a F_b\}]\\
+    &-Tr_c[P_mP_c\{F_a F_bQ^m_{\lambda'}Q^c_{\lambda'}\{P_mP_c\rho_0^m\rho_0^c F_a F_b\} \}]\\ &+Tr_c[P_mP_c\{Q^m_{\lambda'}Q^c_{\lambda'}\{P_mP_c\rho_0^m\rho_0^c F_a F_b\}F_a F_b\}] \Bigg).
+\end{align*} As the mechanical degrees of freedom do not interact with the cavity degrees of freedom, all the mechanical objects can be taken out of the trace as it only applies to cavity degrees of freedom. Care must be taken however to respect the order of each operator. This leads to
+
+\begin{align*}
+    \dot{\mu} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& Tr_c[P_c\{F_a Q^c_{\lambda'}\{F_a P_c\rho_0^c\}\}]P_m\{F_bQ^m_{\lambda'}\{F_bP_m\rho_0^m\}\}\\
+    &-Tr_c[P_c\{Q^c_{\lambda'}\{F_a P_c\rho_0^c\}F_a \}]P_m\{Q^m_{\lambda'}\{F_bP_m\rho_0^m\}F_b\}\\
+    &-Tr_c[P_c\{F_a Q^c_{\lambda'}\{P_c\rho_0^cF_a \} \}]P_m\{F_bQ^m_{\lambda'}\{ P_m\rho_0^mF_b\}\}\\ &+Tr_c[P_c\{Q^c_{\lambda'}\{P_c\rho_0^cF_a  \}F_a \}]P_m\{Q^m_{\lambda'}\{P_m\rho_0^mF_b\}F_b\} \Bigg).
+\end{align*} If the notation $\mu=P_m\rho_0^m$ is applied to the resonator's initial condition and $\rho_{st}=P_c\rho_0^c$ is used for the cavity, the notation can be compacted
+
+\begin{align*}
+    \dot{\mu} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& Tr_c[P_c\{F_a Q^c_{\lambda'}\{F_a \rho_{st}\}\}]P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}\\
+    &-Tr_c[P_c\{Q^c_{\lambda'}\{F_a \rho_{st}\}F_a \}]P_m\{Q^m_{\lambda'}\{F_b\mu\}F_b\}\\
+    &-Tr_c[P_c\{F_a Q^c_{\lambda'}\{\rho_{st}F_a \} \}]P_m\{F_b Q^m_{\lambda'}\{ \mu F_b\}\}\\ &+Tr_c[P_c\{Q^c_{\lambda'}\{\rho_{st} F_a \}F_a \}]P_m\{Q^m_{\lambda'}\{\mu F_b\}F_b\} \Bigg).
+\end{align*} Here, the notation can be further compacted by noting that the projection involves tracing
+
+\begin{equation}\label{eq:DampingBasisTrace}
+    Q_{\lambda'}\{X\} = \hat{Q}_{\lambda'}\otimes Tr[\check{Q}_{\lambda'}X].
+\end{equation} Thus, terms inside the curly brackets can be cyclically permuted and so equation \eqref{eq:ProjectedEquationTrace} can be written as
+
+\begin{align*}
+    \dot{\mu} = (\frac{g_0 \alpha}{\hbar})^2 \sum_{\lambda'}\frac{1}{\lambda'}\Bigg(& T_1(P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}-P_m\{F_b Q^m_{\lambda'}\{\mu F_b\}\})\\
+    &-T_2(P_m\{Q^m_{\lambda'}\{F_b\mu\}F_b\}-P_m\{Q^m_{\lambda'}\{\mu F_b\}F_b\})\Bigg),
+\end{align*} where
+
+\begin{align}
+    T_1 &= Tr_c[P_c\{F_a Q^c_{\lambda'}\{F_a \rho_{st}\}\}],\\
+    T_2 &= Tr_c[P_c\{Q^c_{\lambda'}\{F_a \rho_{st}\}F_a \}].
+\end{align} These coefficients can be calculated independently from the calculations involving the mechanical resonator degrees of freedom. The first such term is
+
+$$
+    P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\},
+$$
+which can be re-written, remembering the sum over the $\lambda'$ eigenvalues as
+
+\begin{equation}
+  \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\} = \sum_{\lambda'} \hat{\rho}_\lambda Tr[\check{\rho_\lambda} F_b \hat{\rho}_{\lambda'}Tr[\check{\rho}_{\lambda'}F_b \mu] ].
+\end{equation} Here, equation \eqref{eq:DampingBasisTrace} has been used. Its is convenient to first calculate the inner trace, noting that all operators involved include only mechanical degrees of freedom so the $m$ superscript is omitted. The inner trace can be written in bra-ket notation. It is important to note that since during this procedure dissipation is not being accounted for in the mechanical degrees of freedom, the proyector states are of the form
+
+\begin{align}
+    \hat{\rho}_\lambda =& \ketbra{n}{n}\text{ for states in } P,\\
+    \hat{\rho}_{\lambda'} =& \ketbra{n}{n+l}\text{ for states in } Q.
+\end{align} With this, the inner trace term can be written as
+
+\begin{equation}
+    Tr[\check{\rho}_{\lambda'}F_b \mu] = \sum_{i} \braket{i}{n'+l}\mel{n'}{F_b \mu}{i}.
+\end{equation} The states are orthonormal so $\braket{i}{n'+l} = \delta_{i,n'+l}$, leading to only one term in the sum being non-zero and as such
+\begin{equation}
+    Tr[\check{\rho}_{\lambda'}F_b \mu] = \mel{n'}{F_b \mu}{n'+l}.
+\end{equation} This result ins inserted into the full expression
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\} =& \sum_{n,n',l} \ketbra{n}{n} \sum_{j}\braket{j}{n}\mel{n}{F_b}{n'}\bra{n'+l}\mel{n'}{F_b\mu}{n'+l}\ket{j},\\
+    =& \sum_{n,n',l} \ketbra{n}{n} \sum_{j}\delta_{j,n}\mel{n}{F_b}{n'}\bra{n'+l}\mel{n'}{F_b\mu}{n'+l}\ket{j},\\
+    =&\sum_{n,n',l}\sum_{j}\delta_{j,n} \ketbra{n}{n} \mel{n}{F_b}{n'}\braket{n'+l}{j}\mel{n'}{F_b\mu}{n'+l},\\
+    =&\sum_{n,n',l}\sum_{j}\delta_{j,n}\delta_{j,n'+l} \ketbra{n}{n} \mel{n}{F_b}{n'}\mel{n'}{F_b\mu}{n'+l},\\
+    =&\sum_{n',l} \mel{n'+l}{F_b}{n'}\mel{n'}{F_b\mu}{n'+l}\ketbra{n'+l}{n'+l}.\\
+\end{align*} The definition of $F_b=(b+b^\dagger)$ means that there are four terms that must be accounted for
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n',l} \mel{n'+l}{b}{n'}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \mel{n'+l}{b^\dagger}{n'}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \mel{n'+l}{b}{n'}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \mel{n'+l}{b^\dagger}{n'}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l}.
+\end{align*} Using the operational rules for the $b$ and $b^\dagger$ operators, this is equivalent to
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n',l} \sqrt{n'}\braket{n'+l}{n'-1}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\braket{n'+l}{n'+1}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'}\braket{n'+l}{n'-1}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\braket{n'+l}{n'+1}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l},
+\end{align*} evaluating the brakets produces Kroeneker deltas
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n',l} \sqrt{n'}\delta_{l,-1}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\delta_{l,1}\mel{n'}{b\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'}\delta_{l,-1}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\delta_{l,1}\mel{n'}{b^\dagger\mu}{n'+l}\ketbra{n'+l}{n'+l},
+\end{align*} the operators to the left of $\mu$ can also be applied
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n',l} \sqrt{n'}\delta_{l,-1}\sqrt{n'+1}\mel{n'+1}{\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\delta_{l,1}\sqrt{n'+1}\mel{n'+1}{\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'}\delta_{l,-1}\sqrt{n'}\mel{n'-1}{\mu}{n'+l}\ketbra{n'+l}{n'+l}\\
+    +&\sum_{n',l} \sqrt{n'+1}\delta_{l,1}\sqrt{n'}\mel{n'-1}{\mu}{n'+l}\ketbra{n'+l}{n'+l}.
+\end{align*} The kroneker deltas set the value of $l$ in each term
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n'} \sqrt{n'}\sqrt{n'+1}\mel{n'+1}{\mu}{n'-1}\ketbra{n'-1}{n'-1}\\
+    +&\sum_{n'} \sqrt{n'+1}\sqrt{n'+1}\mel{n'+1}{\mu}{n'+1}\ketbra{n'+1}{n'+1}\\
+    +&\sum_{n'} \sqrt{n'}\sqrt{n'}\mel{n'-1}{\mu}{n'-1}\ketbra{n'-1}{n'-1}\\
+    +&\sum_{n'} \sqrt{n'+1}\sqrt{n'}\mel{n'-1}{\mu}{n'+1}\ketbra{n'+1}{n'+1}.
+\end{align*} Although the exact expression for $\mu$ is unknown, it is certain to be an element of $P$. This means that the most general possible expression for it is
+
+\begin{equation}
+    \mu = \sum_{j} c_j \ketbra{j}{j},
+\end{equation} so that all elements of the form
+
+\begin{equation}
+    \mel{n}{\mu}{m} = \sum_{j} c_j \braket{n}{j}\braket{j}{m},
+\end{equation} will be zero if $n\neq m$, regardless of the actual expression for $\mu$. This implies
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n'} \sqrt{n'+1}\sqrt{n'+1}\mel{n'+1}{\mu}{n'+1}\ketbra{n'+1}{n'+1}\\
+    +&\sum_{n'} \sqrt{n'}\sqrt{n'}\mel{n'-1}{\mu}{n'-1}\ketbra{n'-1}{n'-1}.
+\end{align*} Since the sums are over all possible values of $n'$ the indices can be adjusted 
+
+\begin{align*}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}=&\sum_{n} (n)\mel{n}{\mu}{n}\ketbra{n}{n}\\
+    +&\sum_{n} (n+1)\mel{n}{\mu}{n}\ketbra{n}{n}.
+\end{align*} This is simply the $\ket{n}$ representation of
+
+\begin{equation}
+    \sum_{\lambda'}  P_m\{F_b Q^m_{\lambda'}\{F_b\mu\}\}= b^\dagger b \mu+ bb^\dagger \mu.
+\end{equation}
 
 \bibliographystyle{unsrt}
 \bibliography{DidacticPaper}
