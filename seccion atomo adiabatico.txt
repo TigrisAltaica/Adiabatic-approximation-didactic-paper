@@ -38,3 +38,53 @@
 \begin{equation}
     P\mathcal{L}_\Delta P = 0
 \end{equation} $\mathcal{L}_\Delta$ does not couple states in $P$.
+
+
+Parte final de átomo adiabático, recortada para reemplazar con algo más simple
+
+Employing a generic starting condition in the $P$ subspace such that
+
+\begin{equation}
+    \rho(0)_P = \sum_{\lambda_p} c_{\lambda_p} \rho_{\lambda_p},
+\end{equation} which comprises the states $\superket{a,a}$,$\superket{a,b}$,$\superket{b,a}$,$\superket{b,b}$ and$\superket{e,e}$, leads to and evolution equation for only the $P$ subspace part of the system. This is a vector equation with five non-zero entries which lead to five uncoupled equations for the time evolution of all the $P$ subspace states. The first entry is
+
+\begin{equation}
+    \dot{\rho_{P_{aa}}} = (-\frac{\ i c_{aa} |\Omega_a|^2 ( 1-{{\ e}^{\ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+\frac{\delta }{2} ) }+\frac{\ i c_{aa} |\Omega_a|^2 ( 1-{{\ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{4 (\Delta+ \frac{\delta }{2} ) })\superket{a,a}.
+\end{equation} This entry corresponds to the state $\superket{a,a}$. As can be readily checked, the constant terms cancel out and this first entry simplifies to
+
+\begin{equation}
+    \dot{\rho_{P_{aa}}} = -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}.
+\end{equation} The equation corresponding to the state $\superket{a,b}$ has a slightly different structure
+
+\begin{equation}
+   \dot{\rho_{P_{ab}}} =\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}.
+\end{equation} this terms is not easily simplified. The equations that model the evolution of the $\superket{b,a}$ and $\superket{b,b}$ are completely analogous. The equation that describes the evolution of $\superket{e,e}$ has the structure
+
+\begin{align}
+    \dot{\rho_{P_{33}}} = -\frac{ic_{33}}{4}\Bigg(&\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}+\Delta ) }+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{4 ( \frac{\delta }{2}-\Delta ) }\\
+    &+\frac{  |\Omega_b|^2 ( 1-{{ e}^{ i t\, ( \Delta -\frac{\delta }{2}) }}) }{4 ( \Delta -\frac{\delta }{2}) }+\frac{  |\Omega_a|^2 ( 1-{{ e}^{ i t\, (-\Delta -\frac{\delta }{2} ) }}) }{4 ( -\frac{\delta }{2}-\Delta ) }\Bigg)\superket{e,e}.\nonumber
+\end{align} Here all the constant terms also cancel out, leading to a simplified term
+
+\begin{equation}
+     \dot{\rho_{P_{33}}} = \frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{e,e}.
+\end{equation} With this, the full set of equations is
+
+\begin{align}
+\dot{\rho_P} =& -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{b,a}\nonumber\\
+&-\frac{c_{bb}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{b,b}\nonumber\\
+&+\frac{c_{33}}{2}\Bigg(|\Omega_a|^2 \frac{\sin\big(t(\Delta+\frac{\delta}{2})\big)}{(\Delta+\frac{\delta}{2})} + |\Omega_b|^2 \frac{\sin\big(t(\Delta-\frac{\delta}{2})\big)}{(\Delta-\frac{\delta}{2})} \Bigg)\superket{e,e}.\nonumber
+\end{align} This is a set of uncoupled differential equations for the time evolution of the entire $P$ subspace. Since the state $\superket{e,e}$ is completely decoupled, the equation is dropped, leaving only the desires set of equations
+
+\begin{align}
+    \dot{\rho_P} =& -\frac{c_{aa}|\Omega_a|^2}{2(\Delta + \frac{\delta}{2})}\sin{\big( t(\Delta+\frac{\delta}{2})\big)}\superket{a,a}\\
+&+\frac{i{c_{\ensuremath{\mathrm{12}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ i t \delta }}-{{ e}^{ i t\, ( \Delta+\frac{\delta }{2} ) }}) }{ ( -\Delta + \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ i t \delta }}-{{ e}^{ i t\, (-\Delta+ \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{a,b}\nonumber\\
+&+\frac{i{c_{\ensuremath{\mathrm{21}}}}}{4}\Bigg(\frac{ |\Omega_b|^2 ( {{ e}^{ -i t \delta }}-{{ e}^{ -i t ( \Delta+\frac{\delta }{2} ) }}) }{ ( \Delta - \frac{\delta}{2}  )  }+\frac{|\Omega_a|^2( {{ e}^{ -i t \delta }}-{{ e}^{ i t\, (\Delta- \frac{\delta }{2} ) }}) }{ ( \Delta + \frac{\delta}{2}) }\Bigg)\superket{b,a}\nonumber\\
+&-\frac{c_{bb}|\Omega_b|^2}{2(\Delta - \frac{\delta}{2})}\sin{\big( t(\Delta-\frac{\delta}{2})\big)}\superket{b,b}.\nonumber
+\end{align} For this particular problem, the initial condition can be chosen so as to not involve $\superket{e,e}$ at all and the only requirement is that $|c_{aa}|^2+|c_{ab}|^2+|c_{ba}|^2+|c_{bb}|^2=1$ for the purposes of normalization. An analytical solution can be computed for each equation. For example, the solutions for the states $\superket{a,a}$ and $\superket{b,b}$ are
+
+\begin{align}
+    \rho_{aa} =& c_{aa}\frac{2 |\Omega_a|^2 \cos{t(\Delta+\frac{\delta}{2}) }+4(\Delta+\frac{\delta}{2})^2 -2  |\Omega_a|^2}{4(\Delta+\frac{\delta}{2})}\superket{a,a},\\
+    \rho_{bb} =& c_{bb}\frac{2  |\Omega_b|^2 \cos{t(\Delta-\frac{\delta}{2}) }+4(\Delta-\frac{\delta}{2})^2 -2  |\Omega_b|^2 }{4(\Delta-\frac{\delta}{2})}\superket{b,b}.
+\end{align}
