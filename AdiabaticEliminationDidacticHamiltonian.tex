@@ -34,66 +34,9 @@
  
  Two examples which will be relevant to this paper are the three level atom in a lambda configuration and cavity optomechanical cooling.  In the case of a three level atom in a lambda configuration, the system is usually assumed to have two "low" energy levels that are close together and a "high" energy level that is far away from the other two levels \cite{BrionAdiabatic2006}. In the case of an optomechanical cavity with both mechanical and electromagnetic dissipation for example, the relevant frequencies involved can differ by several orders of magnitude \cite{VezioOMExperiment2020}.
 
-The adiabatic elimination technique that will be presented in this paper relies on projection super-operators. The technique involves splitting the eigenvalue space of the original problem into two spaces, usually a "fast" evolving space and a "slow" evolving space. Once this split has been performed, an equation, or set of equations, that model the evolution of the "slow" space is obtained. The technique will be explained in detail using two different physical examples, a three level atom in a lambda configuration and an optomechanical cavity with dissipation. The concept of super-kets is also introduced in order to simplify the algebra in the case of the tree level atom.
+The adiabatic elimination technique that will be presented in this paper relies on projection super-operators. The technique involves splitting the eigenvalue space of the original problem into two spaces, usually a "fast" evolving space and a "slow" evolving space. Once this split has been performed, an equation, or set of equations, that model the evolution of the "slow" space is obtained. The technique will be explained in detail using two different physical examples, a three level atom in a lambda configuration and an optomechanical cavity with dissipation. 
  
 
-\section{Quantum mechanics in Liouville space}
-
-It is important to explain the mathematical spaces that will be involved in the following calculations. The wave function in quantum mechanics is a vector in Hilbert space. This Hilbert space is denoted as $\mathcal{H}_d$, where $d$ is the dimension of the Hilbert space. The system's Hamiltonian is an operator and belongs to a different space, also a Hilbert space, of dimension $d^2$, which is denoted by $\mathcal{O}_d$ as this is the space of Linear Operators, which act on the vectors that are elements of $\mathcal{H}_d$. Elements of these two Hilbert spaces are often represented as vectors and matrices respectively. For the projection technique that will be employed later on, it is useful to work with the Liouville equation, which models the time evolution of the density operator, which is an element of $\mathcal{O}_d$. It will be useful to define a new space of \textit{vectorized} elements of $\mathcal{O}_d$. This space has the same dimension as $\mathcal{O}_d$ and will be denoted by $\mathcal{L}_d$. It is also necessary to define the space of "super operators" which act on elements of $\mathcal{L}_d$ and which will be denoted as $\mathcal{S}_{d^2}$. These spaces, as well as the "super ket" formalism which will be employed are discussed in depth in \cite{GyamfiLiouvilleSpace2020}. The super ket formalism consists of defining the spaces $\mathcal{L}_d$ and $\mathcal{S}_{d^2}$ which allows for quantum mechanics to be done using density operators and the super operators that act on them as if they were vectors and matrices respectively. The elements of $\mathcal{L}_d$ are obtained via the bra flipper operator. Given an element $\mathcal{O}_d$, written as
-
-\begin{equation}
-    A = \ketbra{a}{b},
-\end{equation} applying the bra flipper operator $\Upsilon$ yields
-
-\begin{equation}
-    \Upsilon(A) = \ket{a} \otimes \ket{b}^* =\superket{a,b}.
-\end{equation} The symbol $\otimes$ denotes a Kroenecker product. The Kronecker product has the following properties \cite{FernandezKronecker2016}
-
-\begin{align*}
-    A \otimes (B+C) =& A \otimes B + A \otimes C\\
-    (A+B) \otimes C =& A \otimes C + B \otimes C\\
-    (kA)\otimes B =& A\otimes (kB) = k(A \otimes B), \quad k \in \mathbb{C}\\
-    (A \otimes B) \otimes C =& A \otimes (B \otimes C).
-\end{align*} In matrix representation, the product works as
-
-\begin{equation}
-\begin{pmatrix}
-A_{aa} & A_{ab} \\
-A_{ba} & A_{bb}
-\end{pmatrix}
-\otimes
-\begin{pmatrix}
-B_{aa} & B_{ab} \\
-B_{ba} & B_{bb}
-\end{pmatrix} =
-\begin{pmatrix}
-A_{aa} B_{aa} & A_{aa} B_{ab} & A_{ab} B_{aa} & A_{ab} B_{ab} \\
-A_{aa} B_{ba} & A_{aa} B_{bb} & A_{ab} B_{ba} & A_{ab} B_{bb} \\
-A_{ba} B_{aa} & A_{ba} B_{ab} & A_{bb} B_{aa} & A_{bb} B_{ab} \\
-A_{ba} B_{ba} & A_{ba} B_{bb} & A_{bb} B_{ba} & A_{bb} B_{bb}
-\end{pmatrix}.
-\end{equation}
-In this way, density operators can be treated as vectors. Note the rules of the Kroenecker product mean that dimension is retained. In the case of the density operator for a system such as the three level atom, for example, a $3x3$ matrix becomes a $9x1$ vector. All the aforementioned spaces have adjoint or dual spaces associated with them. In the case of $\mathcal{L}_d$, the associated dual space is labeled as $\mathcal{L}^*_d$. This dual space is completely analogous to the dual space defined for $\mathcal{H}_d$, denoted $\mathcal{H}^*_d$. Just as kets are elements of $\mathcal{H}_d$ and bras are elements of  $\mathcal{H}^*_d$, superkets are elements of $\mathcal{L}_d$ and superbras are elements of $\mathcal{L}^*_d$. With these two spaces, it's possible to define an inner product on $\mathcal{L}_d$
-
-\begin{align*}
-    \superbracket{a,b}{a',b'} =& (\bra{a}\otimes\bra{b})(\ket{a'}\otimes\ket{b'}),\\
-    =& \braket{a}{a'}\cdot\braket{b}{b'},\\
-    =& \delta_{a,a'} \delta_{b,b'}.
-\end{align*} Here the mixed product rule for the Kroenecker product has been used and it's assumed that the kets involved belong to an orthonormal basis of $\mathcal{H}_d$. If the inner product of $\mathrm{O}_d$ is the Hilbert-Schmidt inner product, then the transformation performed by $\Upsilon$ is an isomorphism between $\mathcal{O}_d$ and $\mathcal{L}_d$, so the results of products are conserved. The aim of this paper is to teach a projection technique used to adiabatically eliminate certain energy levels in the time evolution of quantum systems. The time evolution of these systems is modeled via the Liouville equation. In Liouville space, the Liouville equation for a density operator $\rho$ whose time evolution is dictated by a Hamiltonian $H$ is given by
-
-\begin{equation}\label{eq:LiouvilleSpaceLiouvillian}
-     \dot{\rho} = -\frac{i}{\hbar}(H\otimes \mathcal{I}_d - \mathcal{I}_d \otimes H^T )\rho = \mathrm{L}\rho.
-\end{equation} It is important to note that the identity is the identity for the operator space. $\mathrm{L}$ is a super-operator that dictates the time evolution of the density operator in Liouville space. It is also useful to define the identity super-operator, which is an element of $\mathcal{S}_{d^2}$ and fulfills
-
-\begin{equation}
-    \mathcal{I}_{d^2}\superket{a,b} = \superket{a,b}.
-\end{equation}
-
-The identity is simply
-
-\begin{equation}
-    \mathcal{I}_{d^2}= \sum_{a=1}^d \sum_{a'=1}^d \supermatrix{a,a'}{a,a'}.
-\end{equation} 
 
 \section{Three level atom}\label{sect:ThreeLevelAtom}
 
@@ -109,15 +52,15 @@ The first example consists of a three level atom in the $\Lambda$ configuration,
 
 \subsection{Projection of the Lambda Atom}
 
-For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$. That is all nine superkets of the form $\superket{i,j}$ with $i, j \in [a,b,e]$. The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different eigenvalue sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map super-kets into super-kets. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
+For the purpose of this section, the discussion will be limited to the three level atom described in section \ref{sect:ThreeLevelAtom}. It is convenient to employ superkets formed from the $\ket{a},\ket{b},\ket{e}$ basis of $\mathcal{H}_3$ as a basis for $\mathcal{L}_3$.  The projection technique that will be employed to adiabatically eliminate the third energy level requires that the differential equation that describes the system's time evolution be projected into two different eigenvalue sub-spaces. These two sub-spaces are typically chosen to correspond to different physical timescales for the processes involved, a fast evolution space and a slow evolution space. The projection super-operators must fulfill certain properties. As a super-operator, it must map states into states. If $P$ is a projection super-operator, then $P^2 = P$. The slow and fast spaces together must account for the entirety of the space, so if $P$ projects into the slow evolution space and $Q$ projects into the fast evolution space, then
 
 \begin{equation}\label{eq:ProyectorPropertyIdentity}
-    P+Q = \mathcal{I}_{d^2}.
+    P+Q = \mathcal{I}.
 \end{equation} Another property, which is inherent to projection super-operators is
 
 \begin{equation}
     P^2 = P \quad \& \quad Q^2 = Q.
-\end{equation} In the superket formalism, these super-operators can be expressed as matrices. The three level atom Hamiltonian acts on vectors which belong to a Hilbert space of dimension $d = 3$. The Hamiltonian is then an operator which belongs to a Hilbert space of dimension $d^2 = 9$. In the superket formalism, density operators, which belong to the same Hilbert space as the Hamiltonian, are expressed as $d \times 1$ vectors (with $d=9$ for the case of the three level atom) and super-operators are expressed as $d \times d$ matrices, so they belong to a space of dimension $d^2 \times d^2 = 81$. The superket basis that will be employed has two indices, this can be re-labeled to only have one index, but the current system will be maintained as it makes the connection to the physics more intuitive. The indices run as follows, for example in the case of the identity
+\end{equation} In the Hamiltonian formalism, these super-operators can be expressed as matrices. The three level atom Hamiltonian acts on vectors which belong to a Hilbert space of dimension $d = 3$. The Hamiltonian is then an operator which belongs to a Hilbert space of dimension $d^2 = 9$. In the superket formalism, density operators, which belong to the same Hilbert space as the Hamiltonian, are expressed as $d \times 1$ vectors (with $d=9$ for the case of the three level atom) and super-operators are expressed as $d \times d$ matrices, so they belong to a space of dimension $d^2 \times d^2 = 81$. The superket basis that will be employed has two indices, this can be re-labeled to only have one index, but the current system will be maintained as it makes the connection to the physics more intuitive. The indices run as follows, for example in the case of the identity
 
 \begin{center}
 \begin{blockarray}{cccccccccc}
@@ -306,16 +249,14 @@ Performing the integration leads involves only what is inside the parenthesis
 \begin{align*}
     \lambda_q &\in [ i(\pm\Delta+\frac{\delta}{2}), i(\pm\Delta - \frac{\delta}{2} )],\\
     \lambda_p &\in [0,0,0, \pm i\delta].
-\end{align*} In order to calculate explicit equations of motion, an initial condition is required. An initial condition where only $P$ states are occupied is employed. It is useful to express the initial condition in terms of $p_{\lambda_p}$ and $p_{\lambda_q}$. The initial condition is then $\rho_0=\sum_{\lambda_p}c_{\lambda_p}p_{\lambda_p}$. With these conditions, equation \eqref{eq:Proyected3Level} is straightforward to evaluate as most of the involved terms in the sum are 0. For simplicity, the term $\exp{\lambda_q t}$ are neglected as these terms oscillate much more rapidly than the other terms and are thus not relevant for the overall evolution of the system, this is an adiabatic approximation. The resulting differential equations are
+\end{align*} In order to calculate explicit equations of motion, an initial condition is required. Physically, the condition $\rho_{aa}(0)=\rho_{bb}(0)=1/2$ is reasonable. As in this approximation the system is expected to mostly be in either of the two lower atomic states, it is reasonable to assume it begins as such. It is useful to express the initial condition in terms of $p_{\lambda_p}$ and $p_{\lambda_q}$. The initial condition is then $\rho_0=\frac{1}{2}(p_{1}+p_{5})$. With these conditions, equation \eqref{eq:Proyected3Level} is straightforward to evaluate as most of the involved terms in the sum are 0. The two non zero terms correspond to the equations
 
 \begin{align*}
-    \dot{\mu}_2 &=\frac{i c_2 e^{(
- i \delta t} ((\delta - 2 \Delta) \Omega_a^2 + (\delta + 2 \Delta) \Omega_b^2))}{2 (\delta^2 - 4 \Delta^2)}\\
- \dot{\mu}_4 =&-\frac{i c_4 e^{(-i \delta t)} ((\delta - 2 \Delta) \Omega_a^2 + (\delta + 2 \Delta) \Omega_b^2)}{
- 2 (\delta^2 - 4 \Delta^2)}
-\end{align*}
+    \dot{\mu}_{aa}=&\frac{1}{2} \Omega_a \Omega_a^* (\delta-2 \Delta) \left(9 \delta^2-4 \Delta^2\right) \sin \left(\frac{1}{2} t (\delta+2 \Delta)\right)\superket{a,a},\\
+    \dot{\mu}_{bb}=&\frac{1}{2} \Omega_b \Omega_b^* (\delta+2 \Delta) \left(9 \delta^2-4 \Delta^2\right) \sin \left(\frac{1}{2} t (\delta-2 \Delta)\right)\superket{b,b}.
+\end{align*} This is a pair of uncoupled differential equations for only the relevant states in the system but which still depend on the parameters of the entire system. This section covers the case of a closed system. However, the projection technique can be similarly applied to an open system which includes dissipation. The example system employed will be a basic optomechanical system.
 
-This is a pair of uncoupled differential equations for only the relevant states in the system but which still depend on the parameters of the entire system. This section covers the case of a closed system. However, the projection technique can be similarly applied to an open system which includes dissipation. The example system employed will be a basic optomechanical system.
+
 
 \section{Example optomechanical system}\label{sec:ExampleSystem}
 
